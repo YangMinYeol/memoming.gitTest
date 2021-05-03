@@ -1,3 +1,7 @@
+memoming
+YangMinYeol
+alsduf495
+
 Github
 첫 테스트입니다.
 열심히 배워봅시다.
@@ -12,3 +16,5 @@ git status - 현재 Git과의 상태를 체크
 git add . - 변경된 파일들을 모두 Tracking
 git commit -m "message" - 인식 할 수 있는 commit을 달아줍니다.
 git push origin +master - 실제로 Git에 PUSH
+
+변경해보았습니다.
