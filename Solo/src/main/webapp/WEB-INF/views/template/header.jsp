@@ -18,6 +18,8 @@ header{
     height:120px;
     z-index: 4;
     background-color:white;
+    font-family:"Tahoma";
+    font-weight:"bolder";
 }
 
 .td{
@@ -127,11 +129,11 @@ $('.holder').on('click', function() {
       <tr style="margin:0px; padding:0px;">
          <td align="right" style="padding:0px;">${session_MEM_ID}<font size='2'>님</font></td>  
           
-         <td align="right" style="padding:0px; width:70px;"><button type="button" onclick="location.href='http://localhost:8007/solo/member/logout.do'" class="btn btn-link" style="padding:5px; width:100;"><font size='2'>로그아웃</font></button></td>
+         <td align="right" style="padding:0px; width:70px;"><button type="button" onclick="location.href='http://localhost:8007/solo/member/logout.do'" class="btn btn-link" style="color:black; padding:5px; width:100;"><font size='2'>로그아웃</font></button></td>
          
-         <td align="right" style="padding:0px; width:80px;"><a href="javascript:myPage();"><button type="button" class="btn btn-link" style="padding:5px;"><font size='2'>마이페이지</font></button></a>  </td> 
+         <td align="right" style="padding:0px; width:80px;"><a href="javascript:myPage();"><button type="button" class="btn btn-link" style="color:black; padding:5px;"><font size='2'>마이페이지</font></button></a>  </td> 
          
-         <td align="right" style="padding:0px; width:70px;"><a href="javascript:basketList();"><button type="button" class="btn btn-link" style="padding:5px;"><font size='2'>장바구니</font></button></a></td>
+         <td align="right" style="padding:0px; width:70px;"><a href="javascript:basketList();"><button type="button" class="btn btn-link" style="color:black; padding:5px;"><font size='2'>장바구니</font></button></a></td>
 
          <input type="hidden" name="MEM_NUM" id="MEM_NUM" value="${session_MEMBER.MEM_NUM}">
       </tr>
@@ -145,9 +147,9 @@ $('.holder').on('click', function() {
  <table style="width:100%; padding:0px; margin:0px; border:0px; height:30px;">
       <tr style="margin:0px; padding:0px;">
         <td align="right" style="padding:0px;" class="td">${session_MEM_ID}<font size='2'>(관리자)</font></td>
-        <td align="right" style="padding:0px;" class="td"><button type="button" onclick="location.href='http://localhost:8007/solo/member/logout.do'" class="btn btn-link" style="padding:5px;"><font size='2'>로그아웃</font></button></td>
-        <td align="right" style="padding:0px;" class="td"><button type="button" onclick="location.href='http://localhost:8007/solo/admin/openAdminMember.do'" class="btn btn-link" style="padding:5px;"><font size='2'>관리자페이지</font></button></td> 
-        <td align="right" style="padding:0px;" class="td"><button type="button" onclick="location.href='http://localhost:8007/solo/admin/order_admin_a.do'" class="btn btn-link" style="padding:0px 15px 0px 5px;"><font size='2'>주문관리</font></button></td>        
+        <td align="right" style="padding:0px;" class="td"><button type="button" onclick="location.href='http://localhost:8007/solo/member/logout.do'" class="btn btn-link" style="color:black; padding:5px;"><font size='2'>로그아웃</font></button></td>
+        <td align="right" style="padding:0px;" class="td"><button type="button" onclick="location.href='http://localhost:8007/solo/admin/openAdminMember.do'" class="btn btn-link" style="color:black; padding:5px;"><font size='2'>관리자페이지</font></button></td> 
+        <td align="right" style="padding:0px;" class="td"><button type="button" onclick="location.href='http://localhost:8007/solo/admin/order_admin_a.do'" class="btn btn-link" style="color:black; padding:0px 15px 0px 5px;"><font size='2'>주문관리</font></button></td>        
       </tr>
 </table>
 </div>

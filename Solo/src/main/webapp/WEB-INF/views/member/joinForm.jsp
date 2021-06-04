@@ -276,17 +276,14 @@ function agreeCheck(frm) // 동의체크
       </table>
 </form>
 
- 
  <%@ include file="/WEB-INF/include/include-body.jspf"%>
-<div style="height:80px;"> 
- 
-</div>
+<div style="height:80px;"></div>
 
 <footer style="border-top:1px solid #D5D5D5;">
 <%@ include file="/WEB-INF/views/template/footer.jsp"%> 
 </footer>
-<script type="text/javascript">
 
+<script type="text/javascript">
       $("#join").on("click", function(e) {
          e.preventDefault();
          fn_insertJoin();

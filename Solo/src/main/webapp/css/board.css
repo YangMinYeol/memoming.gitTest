@@ -142,9 +142,6 @@ html ul.goodsTabs li.selected, html ul.goodsTabs li.active a:hover  {
    border-bottom: 1px solid #fff;    
 }
 
-
-
-/* �亯�� ���⿡ ���°� */
 .answer p{cursor:pointer;}
 .answer .hide{display:none;}
 
