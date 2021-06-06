@@ -5,15 +5,19 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import solo.common.dao.AbstractDAO;
+
 @Repository("boardDAO")
-public class BoardDAO {
+public class BoardDAO extends AbstractDAO{
 
 	// 게시판리스트
+	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>>openBoardList(Map<String, Object> map) throws Exception{
 		return (List<Map<String, Object>>)openBoardList("board.selectBoardList", map);
 	}
 	
 	// 기타리스트
+	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>>etcList(Map<String, Object> map) throws Exception{
 		return (List<Map<String, Object>>)openBoardList("board.etcList", map);
 	}
@@ -54,7 +58,7 @@ public class BoardDAO {
 		return (List<Map<String, Object>>)openBoardList("board.SearchBoard", map);
 	}
 	
-	// 댓글 조회수? 댓글 수?
+	// ?
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> CommentCount(Map<String, Object> map)throws Exception{
 		return (Map<String, Object>)selectOne("board.CommentCount", map);
@@ -71,6 +75,7 @@ public class BoardDAO {
 	}
 	   
 	// ?
+	@SuppressWarnings("unchecked")
 	public Map<String, Object> insertBoardM(Map<String, Object> map)throws Exception{
 		return (Map<String, Object>) selectOne("board.insertBoardM", map);
 	}
