@@ -18,6 +18,10 @@ header{
     font-weight:"bolder";
 }
 
+div{
+font-family:"Tahoma";
+}
+
 .td{
    cellspacing:10px;
 }

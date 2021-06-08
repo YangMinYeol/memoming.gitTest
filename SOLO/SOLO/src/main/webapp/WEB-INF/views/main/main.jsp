@@ -225,10 +225,11 @@ table {
 
 
 <div align="center">
+
    <div style="display:inline-block; width:500px; padding-right:7px; border-right:1px solid #D5D5D5;" align="center">
       <div style="width:60%;">
       <a href="http://localhost:8007/solo/admin/acsBoardList.do" style="text-decoration:none; color:#000000;">
-      <h3 style="margin-bottom:10px;">Notice</h3></a>
+      <h3 style="margin-bottom:10px;"><b><&nbsp;&nbsp;공지사항&nbsp;&nbsp;></b></h3></a>
       </div>
       <div>
       <ul class="list-group list-group-flush">
@@ -241,23 +242,24 @@ table {
       </div>
    </div>    
  
-   <div style="display:inline-block; width:500px;" align="center">  
-      <a href="http://localhost:8007/solo/board/openBoardList.do" style="text-decoration:none; color:#000000;"><h3 style="margin-bottom:10px;">Hot</h3></a>
-      <ul class="list-group list-group-flush">
+	<div style="display:inline-block; width:500px;" align="center">  
+	<a href="http://localhost:8007/solo/board/openBoardList.do" style="text-decoration:none; color:#000000;">
+	<h3 style="margin-bottom:10px;"><b><&nbsp;&nbsp;게시판&nbsp;&nbsp;></b></h3></a>
+	<ul class="list-group list-group-flush">
         <c:forEach items="${list}" var="row">
         <c:if test="${session_MEMBER.MEM_NUM != null}">
-        <li class="list-group-item">
-        <a href="#this" name="Btitle">${row.BOARD_TITLE} [${row.TOTAL_COMMENTS}]</a>
-          <input type="hidden" id="BOARD_NUM" value="${row.BOARD_NUM}"></li>
-          </c:if>
-          <c:if test="${session_MEMBER.MEM_NUM == null}">
-        <li class="list-group-item">
-        <a href="#this" name="titleles">${row.BOARD_TITLE} [${row.TOTAL_COMMENTS}]</a>
-          <input type="hidden" id="BOARD_NUM" value="${row.BOARD_NUM}"></li>
-          </c:if>
-      </c:forEach>
-      </ul>
-   </div> 
+        	<li class="list-group-item">
+        	<a href="#this" name="Btitle"><font color=black>${row.BOARD_TITLE} [${row.TOTAL_COMMENTS}]</font></a>
+          	<input type="hidden" id="BOARD_NUM" value="${row.BOARD_NUM}"></li>
+		</c:if>
+		<c:if test="${session_MEMBER.MEM_NUM == null}">
+			<li class="list-group-item">
+			<a href="#this" name="titleles"><font color=black>${row.BOARD_TITLE} [${row.TOTAL_COMMENTS}]</font></a>
+			<input type="hidden" id="BOARD_NUM" value="${row.BOARD_NUM}"></li>
+		</c:if>
+		</c:forEach>
+	</ul>
+	</div> 
 </div>
 
 <div style="height:80px;"> </div>

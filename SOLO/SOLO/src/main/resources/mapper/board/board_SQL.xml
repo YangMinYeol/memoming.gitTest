@@ -173,7 +173,7 @@
 					AND
 					B.BOARD_DEL_GB = 'N'
 					AND
-					B.BOARD_CAT = 'ETC'
+					B.BOARD_CAT = 'Etc'
 				ORDER BY
 					B.BOARD_NUM DESC) AAA
 			WHERE
@@ -355,8 +355,6 @@
 					M.MEM_NUM = B.BOARD_WRITER
 					AND
 					B.BOARD_DEL_GB = 'N'
-					AND
-					B.BOARD_CAT = 'Top'
 				ORDER BY
 					B.BOARD_COUNT DESC) AAA
 			WHERE
