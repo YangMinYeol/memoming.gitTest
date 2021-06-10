@@ -95,7 +95,9 @@
    <update id="updateHitCnt" parameterType="hashmap">
 		<![CDATA[
       		UPDATE 
-      			BOARD SET BOARD_COUNT = NVL(BOARD_COUNT, 0) + 1
+      			BOARD 
+      		SET 
+      			BOARD_COUNT = NVL(BOARD_COUNT, 0) + 1
       		WHERE
       			BOARD_NUM = #{BOARD_NUM}
 		]]>   

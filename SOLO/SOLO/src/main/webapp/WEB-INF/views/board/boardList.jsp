@@ -117,25 +117,25 @@
 </footer>
 
 <script type="text/javascript">
-   $(document).ready(function(){
-      $("a[name='title']").on("click",function(e){
-         e.preventDefault();
-         fn_openBoardDetail($(this));
-         });
+$(document).ready(function(){
+	$("a[name='title']").on("click",function(e){
+	e.preventDefault();
+	fn_openBoardDetail($(this));
+});
 
-      $("a[name='titleles']").on("click",function(e){
-          e.preventDefault();
-          alert("로그인 후 열람 가능합니다.");
-          return false;
-          });
-      });
+$("a[name='titleles']").on("click",function(e){
+	e.preventDefault();
+	alert("로그인 후 열람 가능합니다.");
+	return false;
+	});
+});
 
-   function fn_openBoardDetail(obj){
-      var comSubmit = new ComSubmit(); 
-      comSubmit.setUrl("<c:url value='/board/openBoardDetail.do'/>");
-       comSubmit.addParam("BOARD_NUM", obj.parent().find("#BOARD_NUM").val());
-       comSubmit.submit();
-      }
+function fn_openBoardDetail(obj){
+	var comSubmit = new ComSubmit(); 
+	comSubmit.setUrl("<c:url value='/board/openBoardDetail.do'/>");
+	comSubmit.addParam("BOARD_NUM", obj.parent().find("#BOARD_NUM").val());
+	comSubmit.submit();
+}
 </script>
 
 </body>
