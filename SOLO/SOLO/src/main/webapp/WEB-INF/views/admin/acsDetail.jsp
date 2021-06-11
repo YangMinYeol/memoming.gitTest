@@ -18,7 +18,7 @@
 
 <!-- title -->
 <div align="center">
-	<h3>NOTICE</h3>
+	<h3>Notice</h3>
 </div>
 	
    <div style="height: 30px;"></div>

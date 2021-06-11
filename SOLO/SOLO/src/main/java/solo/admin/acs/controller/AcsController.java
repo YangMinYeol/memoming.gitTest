@@ -124,52 +124,5 @@ public class AcsController {
 		
 		return mv;  
 	}
-	
-	
-	// FAQ 리스트
-	@RequestMapping(value="/admin/faqBoardList.do")
-	public ModelAndView faqBoardList(CommandMap commandMap)throws Exception{
-		ModelAndView mv = new ModelAndView("/admin/faqList");
-		List<Map<String, Object>> list = acsService.faqBoardList(commandMap.getMap());
-		mv.addObject("list", list);
-		
-		return mv;
-	}
-	
-	// FAQ 작성폼
-	@RequestMapping(value="/admin/openFaqWrite.do")
-	public ModelAndView openFaqWrite(CommandMap commandMap)throws Exception{
-		ModelAndView mv = new ModelAndView("/admin/faqWriteForm");
-		
-		return mv;
-	}
-	
-	// FAQ 작성
-	@RequestMapping(value="/admin/insertFaq.do")
-	public ModelAndView insertFaq(CommandMap commandMap)throws Exception{
-		ModelAndView mv = new ModelAndView("redirect:/admin/faqBoardList.do");
-		acsService.insertFaq(commandMap.getMap());
-		
-		return mv;
-	}
-	
-	// FAQ 수정폼
-	@RequestMapping(value="/admin/updateFaqForm.do")
-	public ModelAndView updateFaqForm(CommandMap commandMap)throws Exception{
-		ModelAndView mv = new ModelAndView("/admin/faqUpdateForm");
-		Map<String, Object> map = acsService.updateFaqForm(commandMap.getMap());
-		mv.addObject("map", map);
-		
-		return mv;	
-	}
-	
-	// FAQ 수정
-	@RequestMapping(value="/admin/updateFaq.do")
-	public ModelAndView updateFaq(CommandMap commandMap)throws Exception{
-		ModelAndView mv = new ModelAndView("redirect:/admin/faqBoardList.do");
-		acsService.updateFaq(commandMap.getMap());
-		
-		return mv;
-	}
 
 }

@@ -9,7 +9,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script> 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
   <script src="<c:url value='/js/common.js'/>" charset="utf-8"></script> 
-</head> 
+</head>
+<title>Solo</title>
 
 <body>
 <%@ include file="/WEB-INF/views/template/header.jsp"%>

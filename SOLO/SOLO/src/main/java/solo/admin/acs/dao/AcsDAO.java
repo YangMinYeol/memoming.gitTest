@@ -60,24 +60,6 @@ public class AcsDAO extends AbstractDAO{
 	public List<Map<String, Object>> SearchAcs(Map<String, Object> map)throws Exception{
 		return (List<Map<String, Object>>)openBoardList("acs.SearchAcs", map);
 	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> faqBoardList(Map<String, Object> map)throws Exception{
-		return (List<Map<String, Object>>) selectList("acs.faqBoardList", map);
-	}
-	
-	public void insertFaq(Map<String, Object> map)throws Exception{
-		insert("acs.insertFaq", map);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public Map<String, Object> updateFaqForm(Map<String, Object> map)throws Exception{
-		return (Map<String, Object>) selectOne("acs.faqUpdateForm", map);
-	}
-	
-	public void updateFaq(Map<String, Object> map)throws Exception{
-		update("acs.updateFaq", map);
-	}
 
 }
 

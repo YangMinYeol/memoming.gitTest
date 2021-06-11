@@ -69,23 +69,4 @@ public class AcsServiceImpl implements AcsService{
 		return acsDAO.SearchAcs(map);
 	}
 	
-	@Override
-	public List<Map<String, Object>> faqBoardList(Map<String, Object> map)throws Exception{
-		return acsDAO.faqBoardList(map);
-	}
-	
-	@Override
-	public void insertFaq(Map<String, Object> map)throws Exception{
-		acsDAO.insertFaq(map);
-	}
-	
-	@Override
-	public Map<String, Object> updateFaqForm(Map<String, Object> map)throws Exception{
-		return acsDAO.updateFaqForm(map);
-	}
-	
-	@Override
-	public void updateFaq(Map<String, Object> map)throws Exception{
-		acsDAO.updateFaq(map);
-	}
 }

@@ -35,15 +35,4 @@ public interface AcsService {
 	// 검색
 	List<Map<String, Object>> SearchAcs(Map<String, Object> map)throws Exception; 
 	
-	// FAQ 리스트
-	List<Map<String, Object>> faqBoardList(Map<String, Object> map)throws Exception;
-	
-	// FAQ 작성
-	void insertFaq(Map<String, Object> map)throws Exception;
-	
-	// FAQ 수정폼
-	Map<String, Object> updateFaqForm(Map<String, Object> map)throws Exception; 
-	
-	// FAQ 수정
-	void updateFaq(Map<String, Object> map)throws Exception; 
 }
