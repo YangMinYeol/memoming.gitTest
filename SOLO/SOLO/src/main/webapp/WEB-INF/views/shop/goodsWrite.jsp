@@ -23,7 +23,7 @@
 <%@ include file="/WEB-INF/views/template/header.jsp"%>
 <div style="height: 160px;"></div>
 <div align="center">
-      <h3>${title }</h3> 
+      <h3>${title}</h3> 
 </div>
 <div style="height: 30px;"></div>
 
@@ -55,9 +55,9 @@
                <th>카테고리/대분류 </th>
                <td>
                   <select name="GOODS_CATEGORY1" style="width:200px;">
-                     <option value="홈트레이닝">홈트레이닝</option>
-                     <option value="식품">식품</option>
-                     <option value="홈케어">홈케어</option>
+                     <option value="상의">상의</option>
+                     <option value="하의">하의</option>
+                     <option value="아우터">아우터</option>
                   </select>
                </td>
             </tr>
@@ -65,19 +65,13 @@
                <th>카테고리/소분류 </th>
                <td>
                   <select name="GOODS_CATEGORY2" style="width:200px;">
-                     <option value="운동복(남)">운동복(남)</option>
-                     <option value="운동복(여)">운동복(여)</option>
-                     <option value="운동용품">운동용품</option>
-                     <option value="운동악세서리">운동악세서리</option>
-                     <option value="식사대용">식사대용</option>
-                     <option value="건강간식">건강간식</option>
-                     <option value="보충제">보충제</option>
-                     <option value="건강음료">건강음료</option>
-                     <option value="향초">향초</option>
-                     <option value="향수">향수</option>
-                     <option value="디퓨저">디퓨저</option>
-                     <option value="제습/가습">제습/가습</option>
-                     <option value="무드등">무드등</option>
+                     <option value="T-shirt">T-shirt</option>
+                     <option value="Blouse">Blouse</option>
+                     <option value="Dress">Dress</option>
+                     <option value="Pants">Pants</option>
+                     <option value="Skirts">Skirts</option>
+                     <option value="Coat">Coat</option>
+                     <option value="Cardigan">Cardigan</option>
                   </select>
                </td>
             </tr>
@@ -97,6 +91,7 @@
                   style="padding:10px; width:70%;" value=<c:if test="${type eq 'modify'}">"${map.GOODS_MPRICE}"</c:if>>
                </td>
             </tr>
+            <tr>
                <th>상품 비회원가 </th>
                <td>
                   <input type="text" name="GOODS_NMPRICE" id="GOODS_NMPRICE" placeholder="상품비회원가" size="40"  class="form-control"
@@ -153,9 +148,9 @@
    
    <br>   
    <div align="center">
-   <c:if test="${type eq 'write'}"><a href="#this" class="btn btn-primary" id="write" onClick="fn_chk()">작성하기</a></c:if>
-   <c:if test="${type eq 'modify'}"><a href="#this" class="btn btn-primary" id="update" onClick="fn_chk()">수정하기</a></c:if>
-   <input type="button" value="목록으로" class="btn btn-outline-primary" onclick="location.href='http://localhost:8007/solo/admin/openAdminGoods.do'">
+   <c:if test="${type eq 'write'}"><a href="#this" class="btn btn-dark" id="write" onClick="fn_chk()">작성하기</a></c:if>
+   <c:if test="${type eq 'modify'}"><a href="#this" class="btn btn-dark" id="update" onClick="fn_chk()">수정하기</a></c:if>
+   <input type="button" value="목록으로" class="btn btn-outline-dark" onclick="location.href='http://localhost:8007/solo/admin/aGoodsList.do'">
    </div>
 </form>
 
@@ -226,17 +221,7 @@ function fn_insertBoard() { // 유효성체크
         alert("HASH을 선택해주세요.");
         return false;
     }
- /*   // 사이즈
-    if(!$("#GOODS_ATT_SIZE").val()){
-        alert("상품사이즈를 선택해주세요.");
-        return false;
-    }  
-    // 컬러
-    if(!$("#GOODS_COLOR").val()){
-        alert("상품컬러를 입력해주세요.");
-        $("#GOODS_COLOR").focus();
-        return false;
-    }*/ 
+
     // 상품 수량
     if(!$("#GOODS_STOCK").val()){
         alert("상품수량을 입력해주세요.");

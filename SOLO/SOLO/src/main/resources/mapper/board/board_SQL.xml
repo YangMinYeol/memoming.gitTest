@@ -393,7 +393,7 @@
 					AND
 					B.BOARD_DEL_GB = 'N'
 					AND
-					(B.BOARD_TITLE like '%' || #{keyword} || '%' OR B.BOARD_CONTENT like '%' || #{keyword} || '%')
+					(B.BOARD_TITLE like '%' || #{keyword} || '%' OR B.BOARD_CONTENT like '%' || #{keyword} || '%' OR M.MEM_NICK like '%' || #{keyword} || '%')
 				ORDER BY
 					B.BOARD_NUM DESC) AAA
 			WHERE

@@ -34,7 +34,7 @@
        <a class="nav-link" href="<c:url value='/admin/openAdminMember.do'/>"><font color="black"><b>회원관리</b></font></a>
      </li>
      <li class="nav-item">
-       <a class="nav-link" href="<c:url value='/admin/openAdminGoods.do'/>"><font color="black"><b>상품관리</b></font></a>
+       <a class="nav-link" href="<c:url value='/admin/aGoodsList.do'/>"><font color="black"><b>상품관리</b></font></a>
      </li>
      <li class="nav-item">
        <a class="nav-link" href="<c:url value='/report/openAdminReport.do'/>"><font color="black"><b>신고관리</b></font></a>

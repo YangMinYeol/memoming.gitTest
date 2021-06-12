@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="aGoods">
+
+	<!-- 상품리스트 -->
+	<select id="aGoodsList" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT 
+			GOODS_NUM,
+   	  		GOODS_NAME,
+   			GOODS_CATEGORY1,
+			GOODS_CATEGORY2,
+			GOODS_CPRICE,
+			GOODS_MPRICE,
+			GOODS_NMPRICE,
+			GOODS_DATE
+		FROM
+			GOODS
+		ORDER BY
+			GOODS_NUM DESC
+	]]>
+	</select>
+
+	<!-- 상품 업데이트 -->
+	<update id="updateGoods" parameterType="hashmap">
+	<![CDATA[
+	UPDATE
+		GOODS
+	SET
+		GOODS_NUM = #{IDX},
+		GOODS_NAME = #{GOODS_NAME},
+		GOODS_CONTENT = #{GOODS_CONTENT},
+		GOODS_MPRICE = #{GOODS_MPRICE},
+		GOODS_NMPRICE = #{GOODS_NMPRICE},
+		GOODS_CPRICE = #{GOODS_CPRICE},
+		GOODS_DATE = sysdate,
+		GOODS_CATEGORY1 = #{GOODS_CATEGORY1},
+		GOODS_CATEGORY2 = #{GOODS_CATEGORY2},
+		GOODS_HASH = #{GOODS_HASH},
+		GOODS_IMG_THUM = #{GOODS_IMG_THUM}
+	WHERE  
+		GOODS_NUM = #{IDX}
+	]]>
+	</update>
+
+	<!-- 상품 옵션 업뎃 -->
+	<update id="attributeDelete" parameterType="hashmap">
+	<![CDATA[
+	UPDATE
+		GOODS_ATTRIBUTE
+	SET 
+		GOODS_STATUS = '1'
+	WHERE
+		GOODS_NUM = #{IDX}
+	]]>
+	</update>
+	
+	<!-- 상품삭제 -->
+	<delete id="deleteAdminGoods" parameterType="hashmap">
+	<![CDATA[
+		DELETE 
+		FROM
+			GOODS
+		WHERE
+			GOODS_NUM = #{GOODS_NUM}
+	]]>
+	</delete>
+
+	<!-- 상품삭제 -->
+	<delete id="deleteAdminGoodsATT" parameterType="hashmap">
+	<![CDATA[
+		DELETE
+		FROM
+			GOODS_ATTRIBUTE
+		WHERE
+			GOODS_NUM = #{GOODS_NUM}
+	]]>
+	</delete>
+
+</mapper>

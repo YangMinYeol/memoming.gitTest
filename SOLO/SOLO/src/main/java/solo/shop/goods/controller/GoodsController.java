@@ -142,7 +142,7 @@ public class GoodsController {
 	// 상품 등록
 	@RequestMapping(value = "/shop/goodsWrite.do", method=RequestMethod.POST)
 	public ModelAndView goodsWrite(CommandMap commandMap, HttpServletRequest request) throws Exception{
-		ModelAndView mv = new ModelAndView("redirect:/admon/openAdminGoods.do");
+		ModelAndView mv = new ModelAndView("redirect:/admin/aGoodsList.do");
 		System.out.println(commandMap.getMap());
 		commandMap.put("GOODS_IMG_THUM", request.getSession().getAttribute("GOODS_IMG_THUM"));
 		goodsService.insertGoods(commandMap.getMap(), request);

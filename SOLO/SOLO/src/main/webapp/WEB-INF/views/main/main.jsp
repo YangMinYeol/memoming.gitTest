@@ -167,9 +167,10 @@ table {
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
         <!-- Slides -->
-        <div class="swiper-slide"><img src="https://www.benito.co.kr/SkinImg/comon/main_banner/1_202105180821138996.jpg" width="100%" height="100%"></div>
-        <div class="swiper-slide"><img src="https://www.benito.co.kr/SkinImg/comon/main_banner/1_202105180416217475.jpg" width="100%" height="100%"></div>
+        <div class="swiper-slide"><img src="https://www.benito.co.kr/SkinImg/comon/main_banner/1_202106090331584640.jpg" width="100%" height="100%"></div>
         <div class="swiper-slide"><img src="https://www.benito.co.kr/SkinImg/comon/main_banner/1_202105210211449745.jpg" width="100%" height="100%"></div>
+        <div class="swiper-slide"><img src="https://www.benito.co.kr/SkinImg/comon/main_banner/1_202106100213249443.jpg" width="100%" height="100%"></div>
+        <div class="swiper-slide"><img src="https://www.benito.co.kr/SkinImg/comon/main_banner/1_202105180821138996.jpg" width="100%" height="100%"></div>
     </div>
     <!-- If we need pagination -->
     <div class="swiper-pagination"></div>
@@ -235,7 +236,7 @@ table {
       <ul class="list-group list-group-flush">
          <c:forEach items="${Nlist}" var="Nrow">
         <li class="list-group-item">
-        <a href="#this" name="Ntitle">${Nrow.NOTICE_TITLE}</a>
+        <a href="#this" name="Ntitle"><font color=black>${Nrow.NOTICE_TITLE}</font></a>
           <input type="hidden" id="NOTICE_NUM" value="${Nrow.NOTICE_NUM}"></li>
       </c:forEach>
       </ul>
