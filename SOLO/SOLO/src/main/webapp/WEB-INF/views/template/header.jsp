@@ -105,7 +105,7 @@ $('.holder').on('click', function() {
 <!-- 로고 -->
 <div style="width:320; height:120; float:left;">
 <a href="http://localhost:8007/solo/main/openMainList.do">
-   <img src="../img/Solo-logo.png" width="320" height="120" style="margin-left:10px;">    
+   <img src="https://1.bp.blogspot.com/-dvcZjY2EY_g/YMTWnCGAtXI/AAAAAAAAAAM/KP1H40j6GGsYJST1OrDTF3pTsxUwWTvTwCLcBGAsYHQ/s0/Solo-logo.png" width="320" height="120" style="margin-left:10px;">    
 </a>   
 </div>
 

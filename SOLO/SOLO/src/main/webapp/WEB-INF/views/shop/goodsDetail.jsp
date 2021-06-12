@@ -33,6 +33,7 @@
    crossorigin="anonymous"></script>
 </head>
 <style>
+
 .layer {
    display: none;
 }
@@ -284,9 +285,9 @@ p {
 <div style="height: 160px;"></div>
 <div align="center" name="GOODS_CATEGORY1" id="GOODS_CATEGORY1" value="${GOODS_CATEGORY1}">
    <h3>
-   <c:if test="${list.GOODS_CATEGORY1 eq '홈트레이닝'}">Home Training</c:if>
-   <c:if test="${list.GOODS_CATEGORY1 eq '식품'}">Healthy Diet</c:if>
-   <c:if test="${list.GOODS_CATEGORY1 eq '홈케어'}">Home Care</c:if>
+   <c:if test="${list.GOODS_CATEGORY1 eq 'Top'}">Top</c:if>
+   <c:if test="${list.GOODS_CATEGORY1 eq 'Bottom'}">Bottom</c:if>
+   <c:if test="${list.GOODS_CATEGORY1 eq 'Outer'}">Outer</c:if>
    </h3> 
 </div>
 <div style="height: 50px;"></div>
@@ -294,11 +295,11 @@ p {
    
    <div style="width:100%; position:relative; left:calc(50% - 600px); height:600px; display:inline">
       
+      <!-- 썸네일을 디테일에 넣기 -->
       <div style="float:left; width:500;">
          <table border="0">
             <tr>
-               <td><img src="/solo/img/goods_upload/${list.GOODS_IMG_THUM}" width="500"
-                  height="500" /></td>
+               <td><img src="/solo/img/goods_upload/${list.GOODS_IMG_THUM}" width="500" height="500" /></td>
             </tr>
          </table>
       </div>

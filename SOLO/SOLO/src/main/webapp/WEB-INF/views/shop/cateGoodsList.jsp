@@ -235,27 +235,21 @@ table {
          <select class="GOODS_CATEGORY2" name="GOODS_CATEGORY2" id="GOODS_CATEGORY2" value="${GOODS_CATEGORY2}" onchange="fn_selectGoodsList(1)">
          <c:if test="${cate eq '상의'}">
             <option value="">전체</option>
-            <option value="운동복(남)">운동복(남)</option>
-        	<option value="운동복(여)">운동복(여)</option>
-         	<option value="운동용품">운동용품</option>
-         	<option value="운동악세서리">운동악세서리</option>
+            <option value="Tee">Tee</option>
+        	<option value="Blouse">Blouse</option>
+         	<option value="Dress">Dress</option>
       	</c:if>
       
       	<c:if test="${cate eq '하의'}">
      		<option value="">전체</option>
-     	    <option value="식사대용">식사대용</option>
-     	    <option value="건강간식">건강간식</option>
-     	    <option value="보충제">보충제</option>
-    	    <option value="건강음료">건강음료</option>
+     	    <option value="Pants">Pants</option>
+     	    <option value="Skirts">Skirts</option>
    		</c:if>
    		
     	<c:if test="${cate eq '아우터'}">
       		<option value="">전체</option>
-         	<option value="향초">향초</option>
-        	<option value="향수">향수</option>
-         	<option value="디퓨저">디퓨저</option>
-         	<option value="제습/가습">제습/가습</option>
-         	<option value="무드등">무드등</option>
+         	<option value="Coat">Coat</option>
+        	<option value="Cardigan">Cardigan</option>
       	</c:if>
       	</select>
       </div>
@@ -268,10 +262,10 @@ table {
       <tr>
          <td>
          </td>
-         <td class="font1"><a href="/solo/shop/goodsList/${category}/NewItem.do">신상품순</a></td> <td>|</td>
-         <td class="font1"><a href="/solo/shop/goodsList/${category}/favorite.do">인기상품순</a></td> <td>|</td>
-         <td class="font1"><a href="/solo/shop/goodsList/${category}/low.do">낮은가격순</a></td> <td>|</td>
-         <td class="font1"><a href="/solo/shop/goodsList/${category}/high.do">높은가격순</a></td> 
+         <td class="font1"><a href="/solo/shop/goodsList/${category}/NewItem.do"><font size=3pt><b>신상품</b></font>&nbsp;</a></td> <td>|&nbsp;</td>
+         <td class="font1"><a href="/solo/shop/goodsList/${category}/favorite.do"><font size=3pt><b>인기상품</b></font>&nbsp;</a></td> <td>|&nbsp;</td>
+         <td class="font1"><a href="/solo/shop/goodsList/${category}/low.do"><font size=3pt><b>낮은가격</b></font>&nbsp;</a></td> <td>|&nbsp;</td>
+         <td class="font1"><a href="/solo/shop/goodsList/${category}/high.do"><font size=3pt><b>높은가격</b></font>&nbsp;</a></td> 
       </tr>
    </table>
 </div>
@@ -358,12 +352,10 @@ function fn_selectGoodsListCallback(data) {
       
       $.each(data.list, function(key, value) {
                      var imgpath = "<img src='/solo/img/goods_upload/"+value.GOODS_IMG_THUM+"' width='200' height='210'>"
-                     //alert(value.GOODS_IMG_THUM);
                      var imgpath1 = value.GOODS_IMG_THUM.split(',');
                      var img0 = imgpath1[0];
                      var img1 = imgpath1[1];
                      var Pick = value.GOODS_HASH.split(',');
-                     //alert(value.GOODS_HASH);
                      var pick1 = "";
                      var pick2 = "";
                      var pick3 = "";

@@ -65,7 +65,7 @@
                <th>카테고리/소분류 </th>
                <td>
                   <select name="GOODS_CATEGORY2" style="width:200px;">
-                     <option value="T-shirt">T-shirt</option>
+                     <option value="Tee">Tee</option>
                      <option value="Blouse">Blouse</option>
                      <option value="Dress">Dress</option>
                      <option value="Pants">Pants</option>

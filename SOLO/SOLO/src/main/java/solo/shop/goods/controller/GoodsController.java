@@ -57,7 +57,7 @@ public class GoodsController {
 	}
 	
 	// 카테고리별 상품 리스트
-	@RequestMapping(value = "/shop/goodsList/{cate}/{orderBy].do")
+	@RequestMapping(value = "/shop/goodsList/{cate}/{orderBy}.do")
 	public ModelAndView openGoodsList(@PathVariable String cate, @PathVariable String orderBy, CommandMap commandMap,
 			@RequestParam(value = "GOODS_CATEGORY2", defaultValue = "") String GOODS_CATEGORY2, HttpServletRequest request)
 			throws Exception {
