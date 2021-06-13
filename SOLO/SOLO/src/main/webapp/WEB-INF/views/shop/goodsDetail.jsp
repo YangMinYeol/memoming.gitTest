@@ -307,7 +307,8 @@ p {
       <div style="float:left; margin-left:30px; width:682;">
          <table border="0">
 
-            <tr>
+			<!-- 상품명위에 ex) BEST, NEED등을 보여줌 -->
+            <tr> 
                <td><c:set var="PICK" value="${fn:split(list.GOODS_HASH,',')}" />
                   <c:forEach var="PICK1" items="${PICK}" varStatus="g">
                      <c:if test="${g.count == 1 }">
@@ -328,27 +329,25 @@ p {
                   </c:forEach></td>
             </tr>
 
-            <tr>
-               <td id="goodsName"><font size="5"
-                  style="box-sizing: border-box; position: relative;">${list.GOODS_NAME}</font></td>
+			<!-- 상품이름 -->
+            <tr> 
+               <td id="goodsName"><font size="5" style="box-sizing: border-box; position: relative;">${list.GOODS_NAME}</font></td>
             </tr>
 
+			<!-- 색상개수 -->
             <tr>
                <td><font size="3">${ColorSize}color</font></td>
             </tr>
 
+			<!-- 가격 -->
             <tr>
-               <td></td>
-            </tr>
-
-            <tr>
-               <td id="price"
-                  style="font-weight: 600px; font-Size: 24px; line-height: 42px;">
+               <td id="price" style="font-weight: 600px; font-Size: 24px; line-height: 42px;">
                   <fmt:formatNumber value="${list.GOODS_MPRICE}" pattern="#,###" />원
                </td>
             </tr>
          </table>
 
+		 <!-- 구분선 -->
          <table>
             <tr>
                <td><hr style="border-top: 1px solid #bbb;" width=640px>
@@ -356,11 +355,9 @@ p {
             </tr>
          </table>
 
-         <br>
-
          <table>
             <tr class="option_section">
-               <td width="511px"><font size="3">배송비</font></td>
+               <td width="510px"><font size="3">배송비</font></td>
                <td><font size="3">선불3,000원</font></td>
             </tr>
          </table>
@@ -373,35 +370,33 @@ p {
          </table>
 
          <br>
+         <!-- 여백 -->
          <br>
 
+		 <!-- 상품옵션 -->
          <div id="item_option">
             <table>
                <tr>
-                  <td><select name="ColorList" id="ColorList" class='total_cartAdd'
-                     style="width: 600px; height: 30px;">
-                        <option value="">==(필수)옵션: 색상 선택 ==</option>
+                  <td><select name="ColorList" id="ColorList" class='total_cartAdd' style="width: 600px; height: 30px;">
+                        <option value=""> (필수)옵션: 색상 </option>
                         <c:forEach var="ColorList" items="${Color}" varStatus="index">
                            <option value="${ColorList}">${ColorList}</option>
                         </c:forEach>
                   </select></td>
-                  
-
                </tr>
 
                <tr>
-                  <td><select name="SizeList" id="SizeList" class='total_cartAdd'
-                     style="width: 600px; height: 30px;">
-                        <option value="">==(필수)옵션: 사이즈 선택 ==</option>
+                  <td><select name="SizeList" id="SizeList" class='total_cartAdd' style="width: 600px; height: 30px;">
+                        <option value=""> (필수)옵션: 사이즈 </option>
                         <c:forEach var="SizeList" items="${Size}" varStatus="index">
                            <option value="${SizeList}">${SizeList}</option>
                         </c:forEach>
                   </select></td>
-               
                </tr>
             </table>
          </div>
 
+		 <!-- 설정한 옵션을 보여주는 테이블 -->
          <form id="frm" name="frm" method="post">
 
             <div>
@@ -423,8 +418,10 @@ p {
                <div class="total_price" style="float:right;">원</div>
                <div class="totals-value" id="cart-total" style="float:right;">0</div>
              </div>
-         <br><br>
+         <br>
+         <br>
          
+         <!-- 구분선 -->
          <table>
             <tr>
                <td><hr style="border-top: 1px solid #bbb;" width=640px>
@@ -432,44 +429,25 @@ p {
             </tr>
          </table>
 
-<!--          <button style="width: 124px; height: 58px;"
-            class="btn btn-outline-danger" id="insertLike"
-            onclick="fn_InsertLike()">
-            <font size="5px">♥</font>
-         </button> -->
          <div align="center" style="width:90%;">
-         <button style="width: 290px; height: 58px;"
-            class="btn btn-outline-primary" id="insertBasket"
-            onclick="fn_InsertBasket()">장바구니</button>
-         <button style="width: 290px; height: 58px;"
-            class="btn btn-primary" id="goodsOrder"
-            onclick="fn_GoodsOrder()">구매하기</button>
+	         <button style="width: 290px; height: 58px;" class="btn btn-outline-primary" id="insertBasket" onclick="fn_InsertBasket()">장바구니</button>
+	         <button style="width: 290px; height: 58px;" class="btn btn-outline-primary" id="goodsOrder" onclick="fn_GoodsOrder()">구매하기</button>
          </div>
          <br>
-
-         <!-- <button id="update" onclick="fn_update()">수정하기</button> -->
-      
       </div>
    </div>
-   
-   </div>
-   
-
-
+  
    <div style="clear: both;"></div>
 
-   <br><br><br><br><br>
    <div align="center">
-      <ul class="nav nav-tabs" id="myTab" role="tablist" style="width: 66%">
+      <ul class="nav nav-tabs" id="myTab" role="tablist" style="width: 70%">
          <li class="nav-item" role="presentation" style="width: 50%" id="f1">
-         <a class="nav-link active" id="home" data-toggle="tab" href="#home"
-            role="tab" aria-controls="home" aria-selected="true" onClick="fnMove(1)">상세정보</a></li>
-        <!--  <li class="nav-item" role="presentation" style="width: 33%"><a
-             id="profile-tab"  href="#profile"
-            role="tab" aria-controls="profile" aria-selected="false" onClick="fnMove(2)">상품문의</a></li> -->
-         <li class="nav-item" role="presentation" style="width: 50%" ><a
-             id="contact-tab"  href="#contact"
-            role="tab" aria-controls="contact" aria-selected="false" onClick="fnMove(3)">쇼핑가이드</a></li>
+         <a class="nav-link active" id="home" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" onClick="fnMove(1)">
+         <font color="black"><b>상세정보</b></font></a></li>
+
+         <li class="nav-item" role="presentation" style="width: 50%" >
+         <a id="contact-tab"  href="#contact" role="tab" aria-controls="contact" aria-selected="false" onClick="fnMove(3)">
+         <font color="gray">쇼핑가이드</font></a></li>
       </ul>
       <br>
       <div class="tab-content" id="myTabContent">
@@ -479,18 +457,18 @@ p {
 
    </div>
 </div>
-   <br><br><br><br>
+
+   <br><br><!-- 여백 --><br><br>
 
 <div align="center">
-      <ul class="nav nav-tabs" id="myTab" role="tablist" style="width: 66%">
-         <li class="nav-item" role="presentation" style="width: 50%" ><a
-             id="home-tab"  href="#home"
-            role="tab" aria-controls="home2" aria-selected="false" onClick="fnMove(1)" >상세정보</a></li>
+      <ul class="nav nav-tabs" id="myTab" role="tablist" style="width: 70%">
+         <li class="nav-item" role="presentation" style="width: 50%" >
+         <a id="home-tab"  href="#home" role="tab" aria-controls="home2" aria-selected="false" onClick="fnMove(1)" >
+         <font color="gray">상세정보</font></a></li>
 
-         <li class="nav-item" role="presentation" style="width: 50%" id="f3"><a
-            class="nav-link active" id="contact" data-toggle="tab"
-            href="#contact2" role="tab" aria-controls="contact2"
-            aria-selected="true" onClick="fnMove(3)">쇼핑가이드</a></li>
+         <li class="nav-item" role="presentation" style="width: 50%" id="f3">
+         <a class="nav-link active" id="contact" data-toggle="tab" href="#contact2" role="tab" aria-controls="contact2" aria-selected="true" onClick="fnMove(3)">
+         <font color="black"><b>쇼핑가이드</b></font></a></li>
 
       </ul>
 	<div class="tab-content" id="myTabContent">
@@ -518,7 +496,7 @@ p {
 
 function fnMove(seq){
     var offset = $('#f' + seq).offset();
-    $('html').animate({scrollTop : offset.top}, 400);
+    $('html').animate({scrollTop : offset.top}, 400); // 상세보기, 쇼핑가이드 스크롤 이동
 }
 
 function numberWithCommas(x) {
@@ -539,14 +517,6 @@ $(document).ready(function() {
 
    fn_selectGoodsList(1); // 상품문의 페이징x
 
-   $("#insertLike").on("click", function(e){// 좋아요 버튼
-      //html 에서 a 태그나 submit 태그는 고유의 동작이 있다. 
-      //페이지를 이동시킨다거나 form 안에 있는 input 등을 전송한다던가 
-      //그러한 동작이 있는데 e.preventDefault 는 그 동작을 중단시킨다.
-      e.preventDefault(); 
-      fn_InsertLike();   
-   });
-
    $("#insertBasket").on("click", function(e){ // 장바구니 버튼
       e.preventDefault(); 
       fn_InsertBasket();
@@ -561,27 +531,20 @@ $(document).ready(function() {
 });
 
 
-function fn_update() {
-   var comSubmit = new ComSubmit();
-   comSubmit.setUrl("<c:url value='/shop/goodsModifyForm.do'/>");
-   comSubmit.addParam("IDX", ${list.GOODS_NO});
-   comSubmit.submit();
-}
-
 function fn_GoodsOrder() { // 구매하기
 	   if(doubleSubmitCheck()) return; // 중복클릭 방지
 
-	   if(${session_MEMBER != null}){
-	      var arraycode = document.getElementsByName("GOODS_ATT_AMOUNT");
-	      var len = arraycode.length;
-	      if(len==0){
+	   if(${session_MEMBER != null}){ // 세션이 널이아니면
+	      var arraycode = document.getElementsByName("GOODS_ATT_AMOUNT"); // 문서객체중 Name값을 가져오는데 사용하는 함수 읽은 객체는 배열로 저장된다
+	      var len = arraycode.length; // 길이를 저장
+	      if(len==0){ // 수량이 0이면
 	         alert("상품을 추가해 주세요.");
-	      }else{
+	      }else{ // 수량이 0이 아니면
 	         var comSubmit = new ComSubmit("frm");
 	         comSubmit.setUrl("<c:url value='/shop/goodsOrder.do'/>");
 	         comSubmit.submit();
 	      }
-	   }else {
+	   }else { // 세션이 널이면
 	      alert("로그인 후 이용해주세요.");
 	      location.href = "/solo/member/openLoginForm.do";
 	   }
@@ -593,16 +556,16 @@ function fn_InsertBasket() { // 장바구니
    if(doubleSubmitCheck()) return; // 중복클릭 방지
 
    if(${session_MEMBER != null}){
-      var arraycode = document.getElementsByName("GOODS_ATT_AMOUNT");
+      var arraycode = document.getElementsByName("GOODS_ATT_AMOUNT"); // 문서객체중 Name값을 가져오는데 사용하는 함수 읽은 객체는 배열로 저장된다
       var len = arraycode.length;
-      if(len==0){
+      if(len==0){ // 수량이 0이면
          alert("상품을 추가해 주세요.");
-      }else{
+      }else{ // 수량이 0이 아니면
          var url = "/solo/shop/basketPopUp.do";
          var name = "popup";
          var option = "width=382, height=227, top=500, left=800, location=no";
          
-          var comSubmit = new ComSubmit("frm");
+         var comSubmit = new ComSubmit("frm"); // 장바구니 창
          comSubmit.setUrl("<c:url value='/shop/insertBasket.do'/>");
          window.open(url,name,option);
          comSubmit.submit();
@@ -626,48 +589,48 @@ $('#ColorList').change(function(){
 
 $('#SizeList').change(function() {
    
-   var ColorList = $('#ColorList option:selected').val();
-   var SizeList = $('#SizeList option:selected').val();
-   if(SizeList != '' && ColorList == ''){
+   var ColorList = $('#ColorList option:selected').val(); // 색상에서 고른값
+   var SizeList = $('#SizeList option:selected').val(); // 사이즈에서 고른값
+   if(SizeList != '' && ColorList == ''){ // 만약 사이즈가 널이아니고 색상이 널이면
    $("#SizeList").val('');
    alert("색상옵션을 먼저 선택하세요.");
    return false;
-   }else{
-
+   } else {
       var html = "";         
-      var color = $("#ColorList option:selected").val();
-      var size = $("#SizeList option:selected").val();
-      var price = $("#price").val();
-      var IDX = $('#IDX').val();
+      var color = $("#ColorList option:selected").val(); // 색상에서 고른 값
+      var size = $("#SizeList option:selected").val(); // 사이즈에서 고른값
+      var price = $("#price").val(); // 가격
+      var IDX = $('#IDX').val(); // 상품번호
       
-      var totalCount = ${ColorSize} * ${Sizecnt};
+      var totalCount = ${ColorSize} * ${Sizecnt}; // 색상개수 * ?
       
-      for(var i=1; i<=totalCount+30; i++) {
-          if(color == $("#nColor"+i+"").text() && size == $("#nSize"+i+"").text()) {
-               $("#ColorList").val('');
-              $("#SizeList").val('');
-               alert("이미있는 상품입니다.");
-               return false;
+      for(var i = 1; i <= totalCount+30; i++) {
+          if(color == $("#nColor"+i+"").text() && size == $("#nSize"+i+"").text()) { // 만약 색상과 사이즈값이 있는값이면
+              $("#ColorList").val(''); // 색상값 초기화
+              $("#SizeList").val(''); // 사이즈 초기화
+              alert("이미있는 상품입니다.");
+              return false;
           }
       }   
-
+      
+	  /* 색상과 사이즈를 선택시 나오는 테이블 폼 */
       html = " <table class='total_cartAdd' style='border:1px solid #bdbebd; width:600px; height:100px; margin-top:0px;' class='fieldx"+cnt+"'> "
-          + " <tr>"
-          + " <td width='70px'>상품명 : </td>"
-          + " <td> "
-          + $("#goodsName").text()
+           + " <tr>"
+           + " <td width='70px'>상품명 : </td>"
+           + " <td> "
+           + $("#goodsName").text() // 상품이름
            + " </td> "
            + " <td> "   
-           + " <div id='field"+cnt+"' class='field"+cnt+"'> " 
+           + " <div id='field"+cnt+"' class='field"+cnt+"'> " // div id와 class명을 cnt가 증가함에따라 같이 증가함
            + " <div class='shopping-cart'> "
            + " <div class='product'> "
            + " <div class='product-quantity'> "
-           + " <input name='GOODS_ATT_AMOUNT' type='number' value='1' min='1' style='width:50px; text-align:center; margin-left:250px; float:left;'> </div> "
+           + " <input name='GOODS_ATT_AMOUNT' type='number' value='1' min='1' style='width:50px; text-align:center; margin-left:250px; float:left;'> </div> " // 수량
            + " <div class='product-removal"+cnt+"'> "
            + " </div> "
-           + " <div class='product-line-price' style='float:left; margin-left:10px;' id='price_sell' price_sell='"+${list.GOODS_MPRICE}+"' >"+numberWithCommas(${list.GOODS_MPRICE})+"</div> "
+           + " <div class='product-line-price' style='float:left; margin-left:10px;' id='price_sell' price_sell='"+${list.GOODS_MPRICE}+"' >"+numberWithCommas(${list.GOODS_MPRICE})+"</div>" // 가격란
            + " <div class='product-removal"+cnt+"'> "
-           + " <button class='remove-product' style='float:left; margin-left:10px;'> "
+           + " <button class='remove-product' style='float:left; margin-left:10px;'> " // x버튼
            + " X "
            + " </button>"
            + " </div> "
@@ -676,99 +639,88 @@ $('#SizeList').change(function() {
            + " </tr> "
            + " <tr> "
            + " <td>색상 :</td> "
-           + " <td id='nColor"+cnt+"'>"+color+"</td> "
+           + " <td id='nColor"+cnt+"'>"+color+"</td> " // 색상
            + " <td></td> "
            + " </tr> "
            + " <tr> "
            + " <td>사이즈 : </td> "
-           + " <td id='nSize"+cnt+"'>"+size+"</td> "
+           + " <td id='nSize"+cnt+"'>"+size+"</td> " // 사이즈
            + " <td></td> "
            + " </tr> "
-          + " <input type='hidden' name='GOODS_COLOR' id='GOODS_COLOR' value='"+color+"'> "
-          + " <input type='hidden' name='GOODS_SIZE' id='GOODS_SIZE' value='"+size+"'> "
-          + " <input type='hidden' name='IDX' id='IDX' value='"+${list.GOODS_NUM}+"'> "
-          + " </table> ";
+           + " <input type='hidden' name='GOODS_COLOR' id='GOODS_COLOR' value='"+color+"'> " // 색상
+           + " <input type='hidden' name='GOODS_SIZE' id='GOODS_SIZE' value='"+size+"'> " // 사이즈
+           + " <input type='hidden' name='IDX' id='IDX' value='"+${list.GOODS_NUM}+"'> " // 상품번호
+           + " </table> ";
              
-      $("#dynamicTable").append(html);
+$("#dynamicTable").append(html);
+    
+if($('#field'+cnt+'')) {
+	recalculateCart();
+ 	var hap = ${list.GOODS_MPRICE}*cnt; // 가격 * 수량
+	var num = numberWithCommas(hap); // num
+	$('.totals-value').text(num); // 총상품금액 값으로 num을 넣어줌
+}
 
-      
-      if($('#field'+cnt+'')) {
-         recalculateCart();
-         var hap = ${list.GOODS_MPRICE}*cnt;
-         var num = numberWithCommas(hap);
-         $('.totals-value').text(num);
-      }
+$("#ColorList").val('');
+$("#SizeList").val('');
 
-      
-      $("#ColorList").val('');
-      $("#SizeList").val('');
-
-      $('.product-removal'+cnt+' button').click( function() {
-           //removeItem(this);
-           $(this).parent().parent().parent().parent().parent().parent().parent().parent().remove();
-           recalculateCart();
-      });
-      
-      cnt++;
-      
-    } 
+$('.product-removal'+cnt+' button').click( function() {
+	$(this).parent().parent().parent().parent().parent().parent().parent().parent().remove(); // 부모 부모 부모... 의 값을 제거
+	recalculateCart();
+	});    
+cnt++; // cnt 증가
+} 
 
 
-      /* Set rates + misc */
-      var fadeTime = 300;
+/* Set rates + misc */
+var fadeTime = 300;
 
-      /* Assign actions */
-      $('.product-quantity input').change( function() {
-        updateQuantity(this);
-      });
+/* Assign actions */
+$('.product-quantity input').change( function() { // 수량
+	updateQuantity(this);
+});
 
-      
-      /* Recalculate cart */
-      function recalculateCart()
-      {
-        var subtotal = 0;
-
-        $('.product').each(function () {
-          subtotal += parseInt($(this).children('.product-line-price').text().replace(',',''));
-        });
+/* Recalculate cart */
+function recalculateCart(){
+	var subtotal = 0;
+	$('.product').each(function () {
+		subtotal += parseInt($(this).children('.product-line-price').text().replace(',',''));
+	});
         
-        /* Calculate totals */
-        var total = subtotal;
+	/* Calculate totals */
+	var total = subtotal;
         
-        /* Update totals display */
-        $('.totals-value').fadeOut(fadeTime, function() {
+	/* Update totals display */
+	$('.totals-value').fadeOut(fadeTime, function() { // 총상품금액.서서히 사라지는 효과
+		$('#cart-total').html(numberWithCommas(total)); // 총상품금액
+		if(total == 0){
+			$('.checkout').fadeOut(fadeTime);
+			} else {
+		$('.checkout').fadeIn(fadeTime);
+		}
+		$('.totals-value').fadeIn(fadeTime); // 총상품금액 서서히 드러나는 효과
+	});
+}
 
-          $('#cart-total').html(numberWithCommas(total));
-          if(total == 0){
-            $('.checkout').fadeOut(fadeTime);
-          }else{
-            $('.checkout').fadeIn(fadeTime);
-          }
-          $('.totals-value').fadeIn(fadeTime);
-        });
-      }
 
-
-      /* Update quantity */
-      function updateQuantity(quantityInput) {
+/* Update quantity */
+function updateQuantity(quantityInput) {
          
-        /* Calculate line price */
-        var productRow = $(quantityInput).parent().parent();
-        var price = ${list.GOODS_MPRICE};
-        var quantity = $(quantityInput).val();
-        var linePrice = price * quantity;
+	/* Calculate line price */
+	var productRow = $(quantityInput).parent().parent();
+	var price = ${list.GOODS_MPRICE}; // 가격
+	var quantity = $(quantityInput).val(); // 수량
+	var linePrice = price * quantity; // 수량 * 가격
         
-        /* Update line price display and recalc cart totals */
-        productRow.children('.product-line-price').each(function () {
-          $(this).fadeOut(fadeTime, function() {
-            $(this).text(numberWithCommas(linePrice));
-            recalculateCart();
-            $(this).fadeIn(fadeTime);
-          });
-        });
-
-      }
-   
+	/* Update line price display and recalc cart totals */
+	productRow.children('.product-line-price').each(function () {
+		$(this).fadeOut(fadeTime, function() {
+			$(this).text(numberWithCommas(linePrice));
+			recalculateCart();
+			$(this).fadeIn(fadeTime);
+			});
+		});
+	}
 }); 
 
 
@@ -785,9 +737,6 @@ $('.sub').click(function () {
    if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
    }
 });
-
-
-
 
 function fn_selectGoodsList(pageNo) {
    var comAjax = new ComAjax();
@@ -823,7 +772,7 @@ function fn_selectGoodsListCallback(data) {
       var cnt1 = 1;
       
       body.append(str);
-}
+	}
 }
 
 </script>
