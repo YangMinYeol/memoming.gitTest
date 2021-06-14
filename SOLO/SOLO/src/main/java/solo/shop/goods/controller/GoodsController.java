@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import solo.common.common.CommandMap;
+import solo.shop.basket.service.BasketService;
 import solo.shop.goods.service.GoodsService;
+import solo.shop.order.service.OrderService;
 
 @Controller // 컨트롤러임을 알림
 public class GoodsController {
@@ -28,11 +30,12 @@ public class GoodsController {
 	@Resource(name = "goodsService") // 해당 객체로 연결
 	private GoodsService goodsService;
 	
-	/*
-	 * @Resource(name = "basketService") private BasketService basketService;
-	 * 
-	 * @Resource(name = "orderService") private OrderService orderService;
-	 */
+	@Resource(name = "basketService")
+	private BasketService basketService;
+	  
+	@Resource(name = "orderService")
+	private OrderService orderService;
+	 
 	
 	// 신상품 리스트
 	@RequestMapping(value = "/shop/newGoodsList.do")
@@ -250,56 +253,65 @@ public class GoodsController {
 		return mv;
 	}
 	
-	/*
-	 * @RequestMapping(value = "/shop/goodsOrder.do", method = RequestMethod.POST)
-	 * public ModelAndView goodsOrder(CommandMap commandMap, HttpServletRequest
-	 * request) throws Exception { // 상품디테일에서 구매 ModelAndView mv = new
-	 * ModelAndView("shop/orderForm");
-	 * 
-	 * goodsService.gumeListDelete(commandMap.getMap());
-	 * 
-	 * Object MEM_NUM = ""; // 세션값 가져오기 HttpSession session = request.getSession();
-	 * commandMap.put("MEM_NUM",
-	 * ((Map)session.getAttribute("session_MEMBER")).get("MEM_NUM"));
-	 * 
-	 * System.out.println("CommandMap=" + commandMap.getMap());
-	 * commandMap.remove("resultList");
-	 * 
-	 * // 일반 스트링으로 왔을때 if(commandMap.get("GOODS_COLOR").getClass().getName().equals(
-	 * "java.lang.String")) { Map<String, Object> map = new HashMap<String,
-	 * Object>(); System.out.println("CommandMap1=" + commandMap.getMap());
-	 * 
-	 * map.put("IDX", commandMap.get("IDX")); map.put("MEM_NUM",
-	 * commandMap.get("MEM_NUM")); map.put("GOODS_SIZE",
-	 * commandMap.get("GOODS_SIZE")); map.put("GOODS_COLOR",
-	 * commandMap.get("GOODS_COLOR")); map.put("GOODS_ATT_AMOUNT",
-	 * commandMap.get("GOODS_ATT_AMOUNT")); goodsService.insertBasket(map, request);
-	 * } else { // 배열로 왔을때 System.out.println("CommanMap2=" + commandMap.getMap());
-	 * String[] Size = (String[]) commandMap.getMap().get("GOODS_SIZE"); String[]
-	 * Color = (String[]) commandMap.getMap().get("GOODS_COLOR"); String[] Amount =
-	 * (String[]) commandMap.getMap().get("GOODS_ATT_AMOUNT"); String[] Goods_Num =
-	 * (String[]) commandMap.getMap().get("IDX");
-	 * 
-	 * System.out.println("다중 사이즈A=" + Goods_Num[0]); System.out.println("다중 사이즈B="
-	 * + Goods_Num[1]); Map<String,Object> map1 = new HashMap<String, Object>(); for
-	 * (int j=0; j <= Size.length - 1; j++) { map1.put("GOODS_SIZE", Size[j]);
-	 * map1.put("GOODS_COLOR", Color[j]); map1.put("GOODS_ATT_AMOUNT", Amount[j]);
-	 * map1.put("IDX", Goods_Num[j]); map1.put("MEM_NUM",
-	 * commandMap.get("MEM_NUM")); System.out.println("Size=" + Size[j]);
-	 * goodsService.insertBasket(map1, request); } }
-	 * 
-	 * // 장바구니 PK값 List<Map<String, Object>> list0 =
-	 * goodsService.selectBasketNo(commandMap.getMap());
-	 * System.out.println("장바구니 번호" + list0.get(0).get("BASKET_NUM"));
-	 * 
-	 * commandMap.remove("SELECT_BASKET_NUM"); commandMap.put("SELECT_BASKET_NUM",
-	 * list0.get(0).get("BASKET_NUM"));
-	 * 
-	 * // 선택한 장바구니번호의 상품 List<Map<String, Object>> list =
-	 * basketService.basketSelectList(commandMap, request); // 주문자정보 Map<String,
-	 * Object> map = orderService.orderMemeberInfo(commandMap, request);
-	 * 
-	 * mv.addObject("list", list); mv.addObject("map", map);
-	 * System.out.println(list); return mv; }
-	 */
+	
+	@RequestMapping(value = "/shop/goodsOrder.do", method = RequestMethod.POST)
+	public ModelAndView goodsOrder(CommandMap commandMap, HttpServletRequest request) throws Exception { // 상품디테일에서 구매 
+		ModelAndView mv = new ModelAndView("shop/orderForm");
+		  
+		goodsService.gumeListDelete(commandMap.getMap());
+	  
+		Object MEM_NUM = ""; // 세션값 가져오기 
+		HttpSession session = request.getSession();
+		commandMap.put("MEM_NUM",((Map)session.getAttribute("session_MEMBER")).get("MEM_NUM"));
+	  
+		System.out.println("CommandMap=" + commandMap.getMap());
+		commandMap.remove("resultList");
+	  
+		// 일반 스트링으로 왔을때 
+		if(commandMap.get("GOODS_COLOR").getClass().getName().equals("java.lang.String")) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			System.out.println("CommandMap1=" + commandMap.getMap());
+	  
+			map.put("IDX", commandMap.get("IDX")); map.put("MEM_NUM",commandMap.get("MEM_NUM")); 
+			map.put("GOODS_SIZE", commandMap.get("GOODS_SIZE"));
+			map.put("GOODS_COLOR", commandMap.get("GOODS_COLOR"));
+			map.put("GOODS_ATT_AMOUNT", commandMap.get("GOODS_ATT_AMOUNT"));
+			goodsService.insertBasket(map, request);
+			} else { // 배열로 왔을때 
+				System.out.println("CommanMap2=" + commandMap.getMap());
+				String[] Size = (String[]) commandMap.getMap().get("GOODS_SIZE");
+				String[] Color = (String[]) commandMap.getMap().get("GOODS_COLOR");
+				String[] Amount = (String[]) commandMap.getMap().get("GOODS_ATT_AMOUNT");
+				String[] Goods_Num = (String[]) commandMap.getMap().get("IDX");
+	  	
+				System.out.println("다중 사이즈A=" + Goods_Num[0]);
+				System.out.println("다중 사이즈B=" + Goods_Num[1]);
+		  
+				Map<String,Object> map1 = new HashMap<String, Object>();
+				for (int j=0; j <= Size.length - 1; j++)  {
+					map1.put("GOODS_SIZE", Size[j]);
+					map1.put("GOODS_COLOR", Color[j]); 
+					map1.put("GOODS_ATT_AMOUNT", Amount[j]);
+					map1.put("IDX", Goods_Num[j]);
+					map1.put("MEM_NUM", commandMap.get("MEM_NUM"));
+					System.out.println("Size=" + Size[j]);
+					goodsService.insertBasket(map1, request);
+			}
+		}
+	
+		List<Map<String, Object>> list0 = goodsService.selectBasketNo(commandMap.getMap()); // 장바구니 PK값 가져오기
+		System.out.println("장바구니 번호" + list0.get(0).get("BASKET_NUM"));
+
+		commandMap.remove("SELECT_BASKET_NUM");
+		commandMap.put("SELECT_BASKET_NUM", list0.get(0).get("BASKET_NUM"));
+
+		List<Map<String,Object>> list = basketService.basketSelectList(commandMap, request); //선택한 장바구니번호의 상품 
+		Map<String,Object> map = orderService.orderMemberInfo(commandMap, request); //주문자정보
+
+		mv.addObject("list", list);
+		mv.addObject("map", map);
+		System.out.println(list);
+		return mv;
+	}
+	 
 }

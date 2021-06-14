@@ -173,25 +173,7 @@
 				GOODS_NO = #{IDX}
 		]]>
 	</update>
-	
-	<!-- 디테일에서 상품 좋아요 등록
-	<insert id="insertGoodsLike" parameterType="hashmap">
-		<![CDATA[
-			INSERT INTO GOODS_LIKE
-					(
-						GOODS_LIKE_NUM,
-						GOODS_LIKE_USER,
-						GOODS_LIKE_GNUM
-					)
-			VALUES
-					(
-						GOODS_LIKE_SEQ.NEXTVAL,
-						#{GOODS_LIKE_USER},
-						#{GOODS_NAME}
-					)
-		]]>
-	</insert>--> 
-	
+		
 	<!-- 상품 상세보기 -->
 	<select id="selectGoodsDetail" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
@@ -275,7 +257,7 @@
             	GOODS_STATUS = '0'
 		</selectKey>
 		<![CDATA[
-	         INSERT INTO GOODS_BASKET(
+	         INSERT INTO BASKET(
 	                        BASKET_NUM,
 	                        MEM_NUM,
 	                        GOODS_NUM,
@@ -328,7 +310,7 @@
 		<![CDATA[
 			DELETE 
 			FROM  
-				GOODS_BASKET
+				BASKET
 			WHERE   
 				GOODS_CHECK = 'N'
 		]]>
@@ -338,13 +320,13 @@
 	<select id="selectBasketNo" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT 
-        			LISTAGG(BASKET_NUM,',') WITHIN GROUP(ORDER BY BASKET_NUM) AS BASKET_NUM
+        		LISTAGG(BASKET_NUM,',') WITHIN GROUP(ORDER BY BASKET_NUM) AS BASKET_NUM
 			FROM 
-					GOODS_BASKET
+				BASKET
 			WHERE 
-	           	    MEM_NUM = #{MEM_NUM}
-	           	    AND
-	           	    GOODS_CHECK = 'N'
+	           	MEM_NUM = #{MEM_NUM}
+	            AND
+	           	GOODS_CHECK = 'N'
 		]]>
 	</select>
    

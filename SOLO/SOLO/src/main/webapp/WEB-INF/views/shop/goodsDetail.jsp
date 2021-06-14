@@ -15,12 +15,12 @@
 <script type="text/javascript"
    src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <!-- CSS only -->
-<link rel="stylesheet"
+<!-- <link rel="stylesheet"
    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-   crossorigin="anonymous">
+   crossorigin="anonymous"> -->
 <!-- JS, Popper.js, and jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"
    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
    crossorigin="anonymous"></script>
 <script
@@ -30,7 +30,7 @@
 <script
    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-   crossorigin="anonymous"></script>
+   crossorigin="anonymous"></script> -->
 </head>
 <style>
 
@@ -430,8 +430,8 @@ p {
          </table>
 
          <div align="center" style="width:90%;">
-	         <button style="width: 290px; height: 58px;" class="btn btn-outline-primary" id="insertBasket" onclick="fn_InsertBasket()">장바구니</button>
-	         <button style="width: 290px; height: 58px;" class="btn btn-outline-primary" id="goodsOrder" onclick="fn_GoodsOrder()">구매하기</button>
+	         <button style="width: 290px; height: 58px;" class="btn btn-outline-primary" id="insertBasket">장바구니</button>
+	         <button style="width: 290px; height: 58px;" class="btn btn-outline-primary" id="goodsOrder">구매하기</button>
          </div>
          <br>
       </div>
@@ -532,7 +532,7 @@ $(document).ready(function() {
 
 
 function fn_GoodsOrder() { // 구매하기
-	   if(doubleSubmitCheck()) return; // 중복클릭 방지
+	   /* if(doubleSubmitCheck()) return; // 중복클릭 방지 */
 
 	   if(${session_MEMBER != null}){ // 세션이 널이아니면
 	      var arraycode = document.getElementsByName("GOODS_ATT_AMOUNT"); // 문서객체중 Name값을 가져오는데 사용하는 함수 읽은 객체는 배열로 저장된다
@@ -553,7 +553,7 @@ function fn_GoodsOrder() { // 구매하기
 
 function fn_InsertBasket() { // 장바구니
    
-   if(doubleSubmitCheck()) return; // 중복클릭 방지
+   /* if(doubleSubmitCheck()) return; // 중복클릭 방지 */
 
    if(${session_MEMBER != null}){
       var arraycode = document.getElementsByName("GOODS_ATT_AMOUNT"); // 문서객체중 Name값을 가져오는데 사용하는 함수 읽은 객체는 배열로 저장된다
