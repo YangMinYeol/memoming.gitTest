@@ -36,7 +36,6 @@ public class GoodsController {
 	@Resource(name = "orderService")
 	private OrderService orderService;
 	 
-	
 	// 신상품 리스트
 	@RequestMapping(value = "/shop/newGoodsList.do")
 	public ModelAndView newGoodsList(CommandMap commandMap) throws Exception {

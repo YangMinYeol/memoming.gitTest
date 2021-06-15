@@ -114,11 +114,11 @@
 	<!-- 주문완료 페이지 -->
 	<select id="selectOrder" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
-		SELECT 
-			MAX(ORDER_NUM) ORDER_NUM 
-		FROM 
+		SELECT
+			MAX(ORDER_NUM) ORDER_NUM
+		FROM
 			ORDERS
-		WHERE 
+		WHERE
 			ORDER_USER_NUM= #{ORDER_USER_NUM}
 		]]>
 	</select>

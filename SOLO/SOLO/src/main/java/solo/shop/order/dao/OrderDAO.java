@@ -36,7 +36,7 @@ public class OrderDAO extends AbstractDAO{
 			
 			insert("order.insertOrderDetail", dp);
 			update("goods.updateGoodsAmount", dp);
-			update("goods.ipdateGoodsDisplay", dp);
+			update("goods.updateGoodsDisplay", dp);
 			
 			Map<String, Object> bod = new HashMap<String, Object>();
 			bod.put("BASKET_NUM", commandMap.get("BASKET_NUN"));
@@ -70,7 +70,7 @@ public class OrderDAO extends AbstractDAO{
 				
 				insert("order.insertOrderDetail", dp);
 				update("goods.updateGoodsAmount", dp);
-				update("goods.ipdateGoodsDisplay", dp);
+				update("goods.updateGoodsDisplay", dp);
 			}
 			Map<String, Object> bod = new HashMap<String, Object>();
 			bod.put("MEM_NUM", commandMap.get("ORDER_USER_NUM"));

@@ -22,9 +22,8 @@ public class MyInfoController {
 	@Resource(name="myInfoService")
 	private MyInfoService myInfoService;
 	
-	/*
-	 * @Resource(name="myOrderService") private MyOrderService myOrderService;
-	 */
+	//@Resource(name="myOrderService")
+	//private MyOrderService myOrderService;
 	
 	@RequestMapping(value="/member/openMyInfoForm.do") //마이페이지
 	public ModelAndView openMyInfoForm(CommandMap commandMap, HttpServletRequest request) throws Exception{
@@ -33,11 +32,11 @@ public class MyInfoController {
 		commandMap.put("MEM_ID", session.getAttribute("session_MEM_ID"));
 		commandMap.put("MEM_NUM", ((Map)session.getAttribute("session_MEMBER")).get("MEM_NUM"));
 		Map<String, Object> map = myInfoService.selectMyInfoForm(commandMap.getMap());
-		/*
-		 * Map<String, Object> map1 = myOrderService.myOrderStatus(commandMap.getMap());
-		 */
+		
+		//Map<String, Object> map1 = myOrderService.myOrderStatus(commandMap.getMap());
+		
 		mv.addObject("map", map); 
-		/* mv.addObject("map1", map1); */
+		//mv.addObject("map1", map1);
 	      
 		return mv;
 	}
