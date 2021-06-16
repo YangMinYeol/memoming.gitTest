@@ -28,7 +28,7 @@
 	        WHERE
 	        	D.ORDER_DETAIL_GNUM = G.GOODS_NUM) AS HAP_CNT
 		FROM
-			MEMBER M, ADMIN_ORDER A, ORDERS O, ORDERS_DETAIL D, GOODS G	
+			MEMBER M, ADMIN_ORDERS A, ORDERS O, ORDERS_DETAIL D, GOODS G	
 		WHERE
 			M.MEM_NUM = O.ORDER_USER_NUM
 			AND
@@ -66,7 +66,7 @@
 				O.ORDER_DMEMO,
 				AO.AORDER_STATE
 			FROM 
-				MEMBER M, ORDERS O, ADMIN_ORDER AO
+				MEMBER M, ORDERS O, ADMIN_ORDERS AO
 			WHERE 
 				M.MEM_NUM = O.ORDER_USER_NUM
 				AND 
@@ -101,7 +101,7 @@
 	<update id="order_state" parameterType="hashmap" > 
 		<![CDATA[
 			UPDATE 
-				ADMIN_ORDER
+				ADMIN_ORDERS
 			SET 
 				AORDER_STATE = AORDER_STATE+1
 			WHERE 
@@ -113,7 +113,7 @@
 	<update id="order_state_ex" parameterType="hashmap" > 
 		<![CDATA[
 			UPDATE 
-				ADMIN_ORDER
+				ADMIN_ORDERS
 			SET
 				AORDER_STATE = AORDER_STATE + 1,
 				AORDER_TRACKING = #{AORDER_TRACKING}
@@ -139,7 +139,7 @@
 				M.MEM_PHONE,
 				M.MEM_EMAIL 
 			FROM 
-				ADMIN_ORDER AO, MEMBER M
+				ADMIN_ORDERS AO, MEMBER M
 			WHERE
 				AO.MEMBER_NUM = M.MEM_NUM
 				AND 
@@ -153,7 +153,7 @@
 	<update id="as_cancle_a" parameterType="hashmap" > 
 		<![CDATA[
 			UPDATE 
-				ADMIN_ORDER
+				ADMIN_ORDERS
 			SET
 				AORDER_STATE = '3',
 				ORDER_REPORT_COMMENT = '교환/환불 취소',
@@ -167,7 +167,7 @@
 	<update id="as_ok_state" parameterType="hashmap" > 
 		<![CDATA[
 			UPDATE
-				ADMIN_ORDER
+				ADMIN_ORDERS
 			SET
 			 	AS_EDATE = SYSDATE
 			WHERE 
@@ -179,7 +179,7 @@
 	<update id="as_ok_orderState" parameterType="hashmap" > 
 		<![CDATA[
 			UPDATE 
-				ADMIN_ORDER
+				ADMIN_ORDERS
 			SET 
 				AORDER_STATE = AORDER_STATE + 1
 			WHERE 

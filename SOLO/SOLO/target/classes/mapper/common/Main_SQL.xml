@@ -70,7 +70,6 @@ FROM   (
                 GOODS_CATEGORY2,
                 GOODS_HASH,
                 GOODS_COUNT, 
-                GOODS_LIKECNT,
                 GOODS_IMG_THUM
             FROM GOODS
             WHERE 

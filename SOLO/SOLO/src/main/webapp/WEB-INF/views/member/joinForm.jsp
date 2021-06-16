@@ -160,7 +160,7 @@ function agreeCheck(frm) // 동의체크
                <input type="text" id="MEM_ID" name="MEM_ID" size="15" maxlength="12"  class="form-control" placeholder="아이디" style="width:100%;">
                </td>
                <td style="width:100px;">
-               <input type="button" name="idCheck" value="ID 중복확인" class="btn btn-outline-secondary mb-2" OnClick="fn_idCheck()" style="width:100%;">
+               <input type="button" name="idCheck" value="ID 중복확인" class="btn btn-outline-dark mb-2" OnClick="fn_idCheck()" style="width:100%;">
                </td>
             </tr>
                
@@ -191,7 +191,7 @@ function agreeCheck(frm) // 동의체크
                <input type="text" id="MEM_NICK" name="MEM_NICK" size="15" maxlength="12" class="form-control" placeholder="닉네임" style="width:100%;">
                </td>
                <td>
-               <input type="button" name="nickCheck" value="중복확인" class="btn btn-outline-secondary mb-2"  OnClick="fn_nickCheck()" style="width:100%;">
+               <input type="button" name="nickCheck" value="중복확인" class="btn btn-outline-dark mb-2"  OnClick="fn_nickCheck()" style="width:100%;">
                </td>
             </tr>
             
@@ -216,7 +216,7 @@ function agreeCheck(frm) // 동의체크
              <input type="text" id="MEM_ZIPCODE" name="MEM_ZIPCODE" placeholder="우편번호" size="15" class="form-control" readonly style="width:100%;">
              </td>
              <td>
-            <input type="button" onclick="DaumAddressAPI()" class="btn btn-outline-secondary mb-2" value="우편번호 찾기" style="width:100%;"><br>
+            <input type="button" onclick="DaumAddressAPI()" class="btn btn-outline-dark mb-2" value="우편번호 찾기" style="width:100%;"><br>
             </td>
             </tr>
             <tr>
@@ -258,7 +258,7 @@ function agreeCheck(frm) // 동의체크
             <br><br>
             이용약관 및 개인정보 수집 및 이용에 모두 동의합니다. 
             <br><br>
-            <input type="button" name="agree" value="약관확인" class="btn btn-outline-secondary mb-2"  onclick="openAgree()"/>
+            <input type="button" name="agree" value="약관확인" class="btn btn-outline-dark mb-2"  onclick="openAgree()"/>
             <div style="display:inline-block; margin-left:100px;">
   				<label class="form-check-label" for="MEM_AGREE"><input class="form-check-input" type="checkbox" name="MEM_AGREE" id="MEM_AGREE" disabled onclick="agreeCheck(this.form)">동의</label>
   			</div>
@@ -268,9 +268,9 @@ function agreeCheck(frm) // 동의체크
             <tr>
                <td colspan="3" align="center">
                <br>
-               <a href="#this" class="btn" id="join"><input type="button" class="btn btn-secondary mb-2" name="checkButton" value="가입하기" disabled/></a> 
-                  <input type="reset" name="reset" value="다시입력" class="btn btn-outline-secondary mb-2"/>&nbsp;&nbsp;&nbsp;
-                  <input type="button" value="가입안함" class="btn btn-outline-secondary mb-2" onclick="javascript:window.location='/solo/main/openMainList.do'" />
+               <a href="#this" class="btn" id="join"><input type="button" class="btn btn-dark mb-2" name="checkButton" value="가입하기" disabled/></a> 
+                  <input type="reset" name="reset" value="다시입력" class="btn btn-outline-dark mb-2"/>&nbsp;&nbsp;&nbsp;
+                  <input type="button" value="가입안함" class="btn btn-outline-dark mb-2" onclick="javascript:window.location='/solo/main/openMainList.do'" />
                </td>
             </tr>
       </table>

@@ -53,7 +53,7 @@ public class AdminOrdersController {
        return mv;
     }
     
-	// 주문/변경 상세보기 
+	// 주문 상세보기 
     @RequestMapping(value="/admin/order_detail.do")
     public ModelAndView order_detail(CommandMap commandMap, HttpServletRequest request) throws Exception {
     	ModelAndView mv = new ModelAndView("/admin/order_detail");

@@ -144,7 +144,7 @@ function getCookie(cookieName) {
           <label class="form-check-label" for="idSaveCheck">아이디 저장</label>
         </div>
         
-        <input type="button" class="btn btn-outline-secondary" style="margin-left:auto; width:100%;" value="로그인" onclick="fsubmit();">
+        <input type="button" class="btn btn-outline-dark" style="margin-left:auto; width:100%;" value="로그인" onclick="fsubmit();">
 		<div class="form-group form-check" style="margin-top:10px;"></div>
 		
 		<div style="float:left;">

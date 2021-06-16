@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myOrder">
+	
+	<!-- 나의 주문내역 -->
+	<select id="openMyOrderList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[ 
+      	SELECT
+			O.ORDER_NUM,
+			O.ORDER_DATE,
+			O.ORDER_PRICE,
+			G.GOODS_NAME,
+			G.GOODS_IMG_THUM,
+			AO.AORDER_STATE,
+			O.ORDER_USER_NUM
+		FROM
+			ADMIN_ORDERS AO, ORDERS O, ORDERS_DETAIL OD, GOODS G
+		WHERE
+			O.ORDER_USER_NUM = #{MEM_NUM}
+			AND
+			AO.AORDER_ORDER_NUM = O.ORDER_NUM
+			AND
+			OD.ORDER_DETAIL_DNUM = O.ORDER_NUM
+			AND
+			OD.ORDER_DETAIL_GNUM = G.GOODS_NUM
+		ORDER BY
+			O.ORDER_DATE DESC       
+		]]>
+	</select>
+	
+	<!-- 주문내역서 보기 -->
+	<select id="openMyOrderMap" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[ 
+		SELECT
+			ORDER_DATE,
+			ORDER_NUM,
+			ORDER_USER_NAME,
+			ORDER_PHONE1,
+			ORDER_PHONE2,
+			ORDER_DZIPCODE,
+			ORDER_DADD1,
+            ORDER_DADD2,
+            ORDER_DMEMO,
+            ORDER_TCOST,
+            ORDER_PAY_NAME,
+            ORDER_PAY_RBANK,
+            ORDER_PAY_RACCOUNT,
+            ORDER_PAY_CASHRE
+		FROM
+			ORDERS
+		WHERE
+			ORDER_NUM = #{ORDER_NUM}
+		]]>
+	</select>
+	
+	<!-- 주문상태 -->
+	<select id="status" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[ 
+		SELECT
+			COUNT(CASE WHEN AORDER_STATE = '0' THEN 1 END) AS PAT_NOT_YET,
+     		COUNT(CASE WHEN AORDER_STATE = '1' THEN 1 END) AS READY_DELIVERY,
+      		COUNT(CASE WHEN AORDER_STATE = '2' THEN 1 END) AS DELIVERING,
+      		COUNT(CASE WHEN AORDER_STATE = '3' THEN 1 END) AS SCDELIVERY,
+      		COUNT(CASE WHEN AORDER_STATE = '4' OR AORDER_STATE = '5' THEN 1 END) AS CXL,
+      		COUNT(CASE WHEN AORDER_STATE = '6' OR AORDER_STATE = '7' OR aorder_state = '8' THEN 1 END) AS EXCHANGE,
+      		COUNT(CASE WHEN AORDER_STATE = '9' OR AORDER_STATE = '10' THEN 1 END) AS REFUND,
+      		COUNT(CASE WHEN AORDER_STATE = '4' OR AORDER_STATE = '5' 
+      		OR AORDER_STATE = '6' OR AORDER_STATE = '7' OR AORDER_STATE = '8' 
+      		OR AORDER_STATE = '9' OR AORDER_STATE = '10' THEN 1 END) AS SHIFT
+   		FROM
+   			ADMIN_ORDERS
+   		WHERE 
+   			MEMBER_NUM = #{MEM_NUM}
+		]]>
+	</select>
+
+	<!-- 주문내역 상세보기 -->
+	<select id="openMyOrderDetail" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[ 
+		SELECT
+  			O.ORDER_NUM,
+   			O.ORDER_DATE,
+   			O.ORDER_USER_NAME,
+   			O.ORDER_PHONE1,
+   			O.ORDER_PHONE2,
+   			O.ORDER_DZIPCODE,
+   			O.ORDER_DADD1,
+   			O.ORDER_DADD2,
+   			O.ORDER_DMEMO,
+		   	O.ORDER_TCOST,
+		   	O.ORDER_PAY_NAME,
+		   	O.ORDER_PAY_RBANK,
+		   	O.ORDER_PAY_RACCOUNT,
+		   	O.ORDER_PAY_CASHRE,
+		   	D.ORDER_DETAIL_AMOUNT,
+		   	D.ORDER_DETAIL_SIZE,
+		   	D.ORDER_DETAIL_COLOR,
+		   	D.ORDER_DETAIL_GNUM,
+		   	A.AORDER_STATE,
+		   	A.AORDER_TRACKING,
+		   	G.GOODS_NAME,
+		  	G.GOODS_MPRICE,
+		   	G.GOODS_IMG_THUM
+		FROM
+   			ORDERS O, ORDERS_DETAIL D, ADMIN_ORDERS A, GOODS G
+		WHERE
+		   	O.ORDER_USER_NUM = #{MEM_NUM}
+		   	AND
+		   	O.ORDER_NUM = #{ORDER_NUM}
+		   	AND
+		   	A.AORDER_ORDER_NUM = O.ORDER_NUM
+		   	AND
+		   	D.ORDER_DETAIL_DNUM = O.ORDER_NUM
+		   	AND
+		   	G.GOODS_NUM = D.ORDER_DETAIL_GNUM
+		]]>
+	</select>
+   
+    <!--  -->
+	<select id="openMyChangeForm" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[ 
+		SELECT DISTINCT
+	      	OD.ORDER_DETAIL_DNUM,
+	      	OD.ORDER_DETAIL_GNUM,
+	      	OD.ORDER_DETAIL_AMOUNT,
+	      	OD.ORDER_DETAIL_SIZE,
+	      	OD.ORDER_DETAIL_COLOR,
+	      	G.GOODS_NAME,
+	      	AO.AORDER_STATE
+   		FROM
+      		ORDERS_DETAIL OD, ORDERS O, GOODS G, ADMIN_ORDERS AO
+   		WHERE
+      		OD.ORDER_DETAIL_DNUM = #{ORDER_NUM}
+      		AND 
+      		O.ORDER_USER_NUM = #{MEM_NUM}
+    		AND
+      		OD.ORDER_DETAIL_GNUM = #{ORDER_DETAIL_GNUM}
+      		AND 
+      		G.GOODS_NUM = OD.ORDER_DETAIL_GNUM
+      		AND 
+      		AO.AORDER_ORDER_NUM = #{ORDER_NUM}
+      		AND 
+      		AO.AORDER_ORDER_NUM = OD.ORDER_DETAIL_DNUM
+      		AND 
+      		OD.ORDER_DETAIL_SIZE = #{ORDER_DETAIL_SIZE}
+      		AND 
+      		OD.ORDER_DETAIL_COLOR = #{ORDER_DETAIL_COLOR}
+		]]>
+	</select>
+   
+   	<!--  -->
+	<update id="updateMyChange" parameterType="hashmap">
+		<![CDATA[ 
+		UPDATE 
+			ADMIN_ORDERS
+		SET
+			AORDER_STATE = #{AORDER_STATE},
+			ORDER_REPORT_COMMENT = #{ORDER_REPORT_COMMENT},
+			AS_SDATE = SYSDATE
+		WHERE
+			AORDER_ORDER_NUM = #{ORDER_DETAIL_DNUM}    
+		]]>
+	</update>
+   
+</mapper>
