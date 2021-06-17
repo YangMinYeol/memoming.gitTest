@@ -117,7 +117,7 @@
 		]]>
 	</select>
    
-    <!--  -->
+    <!-- 교/반/취 폼 -->
 	<select id="openMyChangeForm" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[ 
 		SELECT DISTINCT

@@ -15,145 +15,12 @@
 <link href="<c:url value='/css/goods.css'/>" rel="stylesheet">
 <link href="<c:url value="/css/board.css"/>" rel="stylesheet">
 <link href="<c:url value="/css/btn.css"/>" rel="stylesheet">
+<link href="<c:url value="/css/card.css"/>" rel="stylesheet">
+
 
 <script src="<c:url value='/js/common1.js'/>" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='../css/ui.css'/>" />
-<style>
 
-#main-container
-{
-   margin:0px;
-   min-height: 400px;
-   padding: 20px;
-   border-top: 1px solid #fff;  
-   border-right: 1px solid #fff;     
-   border-left: 1px solid #fff; 
-   border-bottom: 1px solid #fff;    
-}
-
-a { 
-   text-decoration:none;
-   color:#000000;
-}
-
-.font1 {
-   font-size: 14px;
-    color: #666;
-    letter-spacing: -0.5px;
-    line-height: 24px;
-    white-space: normal;
-    line-height: 27px;
-}
-
-.font2 {
-   display: block;
-    font-size: 16px;
-    font-weight: 400;
-    color: #333;
-    font-family: unset;
-    line-height: 27px;
-}
-
-/* css 초기화  */
-table {
-   border-collapse: collapse;
-   border-spacing: 0;
-   border: none;
-}
-/*css 초기화*/
-.card {
-   float:left;
-   height: 300px;
-   width: 21%;
-   display: inline-block;
-   margin-top: 30px;
-   margin-left: 30px;
-   margin-bottom: 30px;
-   position: relative;
-   overflow: hidden;
-   border: none;
-}
-.card-header {
-   -webkit-transition: 0.5s; /*사파리 & 크롬*/
-    -moz-transition: 0.5s;  /*파이어폭스*/
-    -ms-transition: 0.5s;   /*인터넷 익스플로러*/
-    -o-transition: 0.5s;  /*오페라*/
-    transition: 0.5s;
-   width: 100%;
-   height: 270px;
-   border-radius: 15px 15px 0 0;
-   background-image: url("resources/images/no_image.png");
-   background-size: 100% 280px;
-   background-repeat: no-repeat;   
-}
-
-.card-header-is_closed{
-    background-color: #EF5A31 ;
-    color: #FFF ;
-    font-weight: bold ;
-    text-align: center ;
-    float: right;
-    margin: 15px 15px 0 0;
-    border-radius: 50%;
-    font-weight: bold;
-    padding: 10px 10px;
-    line-height: 20px;
-}
-.card-header-is_closed2{
-    background-color: #3fb50e ;
-    color: #FFF ;
-    font-weight: bold ;
-    text-align: center ;
-    float: right;
-    margin: 15px 15px 0 0;
-    border-radius: 50%;
-    font-weight: bold;
-    padding: 10px 10px;
-    line-height: 20px;
-}
-
-.card-body-header{
-   line-height: 25px;
-   margin: 10px 20px 0px 20px;
-}
-
-.card-body-description  {
-    opacity: 0;
-    color: #757B82;
-    line-height: 25px;
-    -webkit-transition: .2s ease-in-out; /*사파리&크롬*/
-    transition : .2s ease-in-out;
-    overflow: hidden;
-   height: 180px;
-   margin: 5px 20px;
-}
-
-.card-body-hashtag {
-   color: #2478FF;
-   font-style: italic;
-}
-
-.card-body-footer {
-     position: absolute; 
-     margin-top: 15px;
-     margin-bottom: 6px;
-    bottom: 0; 
-    width: 314px;
-    font-size: 10px;
-    color: #9FA5A8;
-    padding: 0 10px;
-}
-
-.icon {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 2px;
-}
-
-.imgswap img:last-child{display:none}
-
-
-</style>
 </head>
 <body>
 
@@ -184,7 +51,7 @@ table {
 
 <hr style="align:center; width:1500px;">
 
-<div align="center" class="container" style="width:68%;">
+<div align="center" class="container" style="width:2000px;">
    <h3>Top</h3>
    <div id="main-container">
 <table class="HOT_GOODS_LIST" style="width:100%">
@@ -204,7 +71,7 @@ table {
 
 <hr style="align:center; width:1500px;">
 
-<div align="center" class="container" style="width:68%;">
+<div align="center" class="container" style="width:2000px;">
    <h3>New</h3> 
    <div id="main-container">
 <table class="NEW_GOODS_LIST" style="width:100%">
@@ -355,91 +222,88 @@ function fn_selectGoodsList(pageNo) {
 }
 
 function fn_selectGoodsListCallback(data) {
-   var total = data.TOTAL;
-      var body = $(".NEW_GOODS_LIST");
-      body.empty();
-      if (total <= 0) {
-         var str = "<tr>" + "<td colspan='4' align='center'>조회된 결과가 없습니다.</td>"
-               + "</tr>";
-         body.append(str);
-      } else {
-         var params = {
-            divId : "PAGE_NAVI",
-            pageIndex : "PAGE_INDEX",
-            totalCount : total,
+	var total = data.TOTAL;
+	var body = $(".NEW_GOODS_LIST");
+	body.empty();
+	if (total <= 0) {
+		var str = "<tr>" + "<td colspan='4' align='center'>조회된 결과가 없습니다.</td>"
+		+ "</tr>";
+		body.append(str);
+	} else {
+		var params = {
+			divId : "PAGE_NAVI",
+			pageIndex : "PAGE_INDEX",
+			totalCount : total,
             recordCount : 16,
             eventName : "fn_selectGoodsList"
-         };
-         gfn_renderPaging(params);
+	};
+		
+gfn_renderPaging(params);
         
-         var str = "";
+var str = "";
          
-         $.each(data.list, function(key, value) {
-                        var imgpath = "<img src='/solo/img/goods_upload/"+value.GOODS_IMG_THUM+"' width='200' height='210'>"
-                        //alert(value.GOODS_IMG_THUM);
-                        var imgpath1 = value.GOODS_IMG_THUM.split(',');
-                        var img0 = imgpath1[0];
-                        var img1 = imgpath1[1];
-                        
-                        var Pick = value.GOODS_HASH.split(',');
-                        //alert(value.GOODS_HASH);
-                        var pick1 = "";
-                        var pick2 = "";
-                        var pick3 = "";
-                        var pick4 = "";
-                        var num = "";
-                        for (var i=0; i<Pick.length; i++) {
-                              Pick[i];
-                              if(Pick[0] == null){
-                                 pick1 = "";
-                              }else{
-                                 pick1 = Pick[0];
-                              }
-                              if(Pick[1] == null){
-                                 pick2 = "";
-                              }else {
-                                 pick2 = Pick[1];
-                              }
-                              if(Pick[2] == null){
-                                 pick3 = "";
-                              }else {
-                                 pick3 = Pick[2];
-                              }
-                              if(Pick[3] == null){
-                                 pick4 = "";
-                              }else{
-                                 pick4 = Pick[3];
-                              }
-                           }
-               
-                        str += "<div class='card'>"
-                           +      "<a href='#this' name='TITLE'>"
-                           +      "<div class='imgswap'>"
-                           +       "<img src='/solo/img/goods_upload/"+img0+"' width='200' height='210'>" 
-                           +       "<img src='/solo/img/goods_upload/"+img1+"' width='200' height='210'>"
-                           +     " </div> "
-                           +     " <c:if test='${"+num+" ne "+pick1+"}'> "
-                           +      " <span style='background-color:#79ABFF; line-height: 27px; border-radius: 10px;'><font color='#ffffff' size='2'> "
-                           +      pick1 +"</font></span>"   
-                           +     " </c:if>"
-                           +     " <c:if test='${"+num+" ne "+pick2+"}'> "
-                           +     " <span style='background-color:#5587ED; line-height: 27px; border-radius: 10px;'><font color='#ffffff' size='2'> "
-                           +      pick2 + "</font></span>"
-                           +     " </c:if>"
-                           +     " <c:if test='${"+num+" ne "+pick3+" }'> "
-                           +     " <span style='background-color:#79ABFF; line-height: 27px; border-radius: 10px;'><font color='#ffffff' size='2'> "  
-                           +       pick3 + "</font></span>"
-                           +     " </c:if>"
-                           +     " <c:if test='${"+num+" ne "+pick4+" }'> "
-                           +     " <span style='background-color:#5587ED; line-height: 27px; border-radius:10px;'><font color='#ffffff' size='2'> "  
-                           +       pick4 + "</font></span>"
-                           +     " </c:if> <br>"
-                           +     " <font class='font1'>"+value.GOODS_NAME+"</font><br>"
-                           +     " <font class='font2'>"+numberWithCommas(value.GOODS_MPRICE)+"원</font> "   
-                           +       " <input type='hidden' id='IDX' name='IDX' value=" + value.GOODS_NUM + ">"
-                           +     " </a>"
-                           +" </div>";
-                     });
+$.each(data.list, function(key, value) {
+	var imgpath = "<img src='/solo/img/goods_upload/"+value.GOODS_IMG_THUM+"' width='200' height='210'>"
+	var imgpath1 = value.GOODS_IMG_THUM.split(',');
+	var img0 = imgpath1[0];
+	var img1 = imgpath1[1];                   
+	var Pick = value.GOODS_HASH.split(',');
+	var pick1 = "";
+	var pick2 = "";
+	var pick3 = "";
+	var pick4 = "";
+	var num = "";
+	for (var i=0; i<Pick.length; i++) {
+		Pick[i];
+		if(Pick[0] == null){
+        	pick1 = "";
+		}else{
+			pick1 = Pick[0];
+		}
+		if(Pick[1] == null){
+			pick2 = "";
+		}else {
+			pick2 = Pick[1];
+		}
+		if(Pick[2] == null){
+			pick3 = "";
+		}else {
+			pick3 = Pick[2];
+		}
+		if(Pick[3] == null){
+			pick4 = "";
+		}else{
+			pick4 = Pick[3];
+		}
+	}  
+                    	                                       
+	str += 	"<div class='card'>"
+		+	"<a href='#this' name='TITLE'>"
+		+	"<div class='imgswap'>"
+		+	"<img src='/solo/img/goods_upload/"+img0+"' width='100%' height='100%'>" 
+		+	"<img src='/solo/img/goods_upload/"+img1+"' width='100%' height='100%'>"
+		+	" </div> "
+		+	" <c:if test='${"+num+" ne "+pick1+"}'> "
+		+ 	" <span style='background-color:#79ABFF; line-height: 27px; border-radius: 5px;'><font color='#ffffff' size='2'> "
+		+	pick1 +"</font></span>"   
+		+ 	" </c:if>"
+		+ 	" <c:if test='${"+num+" ne "+pick2+"}'> "
+		+ 	" <span style='background-color:#5587ED; line-height: 27px; border-radius: 5px;'><font color='#ffffff' size='2'> "
+		+	pick2 + "</font></span>"
+		+	" </c:if>"
+		+ 	" <c:if test='${"+num+" ne "+pick3+" }'> "
+		+ 	" <span style='background-color:blue; line-height: 27px; border-radius: 5px;'><font color='#ffffff' size='2'> "  
+		+ 	pick3 + "</font></span>"
+		+ 	" </c:if>"
+		+	" <c:if test='${"+num+" ne "+pick4+" }'> "
+		+	" <span style='background-color:#9779FF; line-height: 27px; border-radius: 5px;'><font color='#ffffff' size='2'> "  
+		+ 	pick4 + "</font></span>"			+	" </c:if> <br>"
+		+	" <font class='font1'>"+value.GOODS_NAME+"</font><br>"
+		+	" <font class='font2'>"+numberWithCommas(value.GOODS_MPRICE)+"원</font> "   
+		+ 	" <input type='hidden' id='IDX' name='IDX' value=" + value.GOODS_NUM + ">"
+		+ 	" </a>"
+		+	" </div>";
+	});
 
          body.append(str);
          $("a[name='title']").on("click", function(e){ //제목 
@@ -458,102 +322,102 @@ function fn_selecthotGoodsList(pageNo) {
       comAjax.addParam("PAGE_INDEX", pageNo);
       comAjax.addParam("PAGE_ROW", 1);
       comAjax.ajax();
-   }
+}
 
-   function fn_selecthotGoodsListCallback(data) {
-      var total = data.TOTAL;
-         var body = $(".HOT_GOODS_LIST");
-         body.empty();
-         if (total <= 0) {
-            var str = "<tr>" + "<td colspan='4' align='center'>조회된 결과가 없습니다.</td>"
-                  + "</tr>";
-            body.append(str);
-         } else {
-            var params = {
-               divId : "PAGE_NAVI",
-               pageIndex : "PAGE_INDEX",
-               totalCount : total,
-               recordCount : 16,
-               eventName : "fn_selectGoodsList"
-            };
-            gfn_renderPaging(params);
+function fn_selecthotGoodsListCallback(data) {
+	var total = data.TOTAL;
+	var body = $(".HOT_GOODS_LIST");
+	body.empty();
+	if (total <= 0) {
+		var str = "<tr>" + "<td colspan='4' align='center'>조회된 결과가 없습니다.</td>"
+		+ "</tr>";
+		body.append(str);
+	} else {
+	var params = {
+	divId : "PAGE_NAVI",
+	pageIndex : "PAGE_INDEX",
+	totalCount : total,
+	recordCount : 16,
+	eventName : "fn_selectGoodsList"
+};
+	
+	gfn_renderPaging(params);
            
-            var str = "";
+	var str = "";
             
-            $.each(data.list, function(key, value) {
-                           var imgpath = "<img src='/solo/img/goods_upload/"+value.GOODS_IMG_THUM+"' width='200' height='210'>"
-                           //alert(value.GOODS_IMG_THUM);
-                           var imgpath1 = value.GOODS_IMG_THUM.split(',');
-                           var img0 = imgpath1[0];
-                           var img1 = imgpath1[1];
-                                    
-                           var Pick = value.GOODS_HASH.split(',');
-                           //alert(value.GOODS_HASH);
-                           var pick1 = "";
-                           var pick2 = "";
-                           var pick3 = "";
-                           var pick4 = "";
-                           var num = "";
-                           for (var i=0; i<Pick.length; i++) {
-                                 Pick[i];
-                                 if(Pick[0] == null){
-                                    pick1 = "";
-                                 }else{
-                                    pick1 = Pick[0];
-                                 }
-                                 if(Pick[1] == null){
-                                    pick2 = "";
-                                 }else {
-                                    pick2 = Pick[1];
-                                 }
-                                 if(Pick[2] == null){
-                                    pick3 = "";
-                                 }else {
-                                    pick3 = Pick[2];
-                                 }
-                                 if(Pick[3] == null){
-                                    pick4 = "";
-                                 }else{
-                                    pick4 = Pick[3];
-                                 }
-                              }  
+$.each(data.list, function(key, value) {
+	
+	var imgpath = "<img src='/solo/img/goods_upload/"+value.GOODS_IMG_THUM+"' width='100%' height='100%'>"
+	var imgpath1 = value.GOODS_IMG_THUM.split(',');
+	var img0 = imgpath1[0];
+	var img1 = imgpath1[1];                               
+	var Pick = value.GOODS_HASH.split(',');
+
+	var pick1 = "";
+	var pick2 = "";
+	var pick3 = "";
+	var pick4 = "";
+	var num = "";
+	for (var i=0; i<Pick.length; i++) {
+	Pick[i];
+	if(Pick[0] == null){
+		pick1 = "";
+	}else{
+		pick1 = Pick[0];
+	}
+	if(Pick[1] == null){
+		pick2 = "";
+	}else {
+		pick2 = Pick[1];
+	}
+	if(Pick[2] == null){
+		pick3 = "";
+	}else {
+		pick3 = Pick[2];
+	}
+	if(Pick[3] == null){
+		pick4 = "";
+	}else{
+		pick4 = Pick[3];
+	}
+}  
                                        
-                           str += "<div class='card'>"
-                              +      "<a href='#this' name='TITLE'>"
-                              +      "<div class='imgswap'>"
-                              +       "<img src='/solo/img/goods_upload/"+img0+"' width='200' height='210'>" 
-                              +       "<img src='/solo/img/goods_upload/"+img1+"' width='200' height='210'>"
-                              +     " </div> "
-                              +     " <c:if test='${"+num+" ne "+pick1+"}'> "
-                              +      " <span style='background-color:#79ABFF; line-height: 27px; border-radius: 7px;'><font color='#ffffff' size='2'> "
-                              +      pick1 +"</font></span>"   
-                              +     " </c:if>"
-                              +     " <c:if test='${"+num+" ne "+pick2+"}'> "
-                              +     " <span style='background-color:#5587ED; line-height: 27px; border-radius: 7px;'><font color='#ffffff' size='2'> "
-                              +      pick2 + "</font></span>"
-                              +     " </c:if>"
-                              +     " <c:if test='${"+num+" ne "+pick3+" }'> "
-                              +     " <span style='background-color:#79ABFF; line-height: 27px; border-radius: 7px;'><font color='#ffffff' size='2'> "  
-                              +       pick3 + "</font></span>"
-                              +     " </c:if>"
-                              +     " <c:if test='${"+num+" ne "+pick4+" }'> "
-                              +     " <span style='background-color:#5587ED; line-height: 27px; border-radius: 7px;'><font color='#ffffff' size='2'> "  
-                              +       pick4 + "</font></span>"
-                              +     " </c:if> <br>"
-                              +     " <font class='font1'>"+value.GOODS_NAME+"</font><br>"
-                              +     " <font class='font2'>"+numberWithCommas(value.GOODS_MPRICE)+"원</font> "   
-                              +       " <input type='hidden' id='IDX' name='IDX' value=" + value.GOODS_NUM + ">"
-                              +     " </a>"
-                              +" </div>";
-                        });
+str += 	"<div class='card'>"
+	+	"<a href='#this' name='TITLE'>"
+	+	"<div class='imgswap'>"
+	+	"<img src='/solo/img/goods_upload/"+img0+"' width='100%' height='100%'>" 
+	+	"<img src='/solo/img/goods_upload/"+img1+"' width='100%' height='100%'>"
+	+	" </div> "
+	+	" <c:if test='${"+num+" ne "+pick1+"}'> "
+	+ 	" <span style='background-color:#79ABFF; line-height: 27px; border-radius: 5px;'><font color='#ffffff' size='2'> "
+	+	pick1 +"</font></span>"   
+	+ 	" </c:if>"
+	+ 	" <c:if test='${"+num+" ne "+pick2+"}'> "
+	+ 	" <span style='background-color:#5587ED; line-height: 27px; border-radius: 5px;'><font color='#ffffff' size='2'> "
+	+	pick2 + "</font></span>"
+	+	" </c:if>"
+	+ 	" <c:if test='${"+num+" ne "+pick3+" }'> "
+	+ 	" <span style='background-color:blue; line-height: 27px; border-radius: 5px;'><font color='#ffffff' size='2'> "  
+	+ 	pick3 + "</font></span>"
+	+ 	" </c:if>"
+	+	" <c:if test='${"+num+" ne "+ pick4 +" }'> "
+	+	" <span style='background-color:#9779FF; line-height: 27px; border-radius: 5px;'><font color='#ffffff' size='2'> "  
+	+ 	pick4 + "</font></span>"
+	+	" </c:if> <br>"
+	+	" <font class='font1'>"+value.GOODS_NAME+"</font><br>"
+	+	" <font class='font2'>"+numberWithCommas(value.GOODS_MPRICE)+"원</font> "   
+	+ 	" <input type='hidden' id='IDX' name='IDX' value=" + value.GOODS_NUM + ">"
+	+ 	" </a>"
+	+	" </div>";
+	});
             
-            body.append(str);
-            $("a[name='title']").on("click", function(e){ //제목 
-               e.preventDefault();
-               fn_openGoodsDetail($(this));
-            });  
-         } 
-   }
+	body.append(str);
+		$("a[name='title']").on("click", function(e){ //제목 
+		e.preventDefault();
+		fn_openGoodsDetail($(this));
+		});  
+	} 
+}
 </script>
 </body>
 </html>

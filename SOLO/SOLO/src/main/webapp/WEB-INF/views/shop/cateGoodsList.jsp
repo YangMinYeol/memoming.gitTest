@@ -12,200 +12,18 @@
 <head>
 <link href="<c:url value="/css/board.css"/>" rel="stylesheet">
 <link href="<c:url value="/css/btn.css"/>" rel="stylesheet">
+<link href="<c:url value='/css/goods.css'/>" rel="stylesheet">
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<c:url value='/js/common1.js'/>" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/css/ui.css'/>" />
-
+<link href="<c:url value="/css/card.css"/>" rel="stylesheet">
 <!-- bx -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
-<style>
 
-#main-container
-{
-   margin:0px;
-   min-height: 400px;
-   padding: 20px;
-   border-top: 1px solid #fff;  
-   border-right: 1px solid #fff;     
-   border-left: 1px solid #fff; 
-   border-bottom: 1px solid #fff;    
-}
-
-/* 검색버튼 시작 */
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
-
-body{
-  
-  font-family: 'Open Sans', sans-serif;
-}
-
-.search {
-  width: 100%;
-  position: relative;
-  display: flex;
-}
-
-.searchTerm {
-  width: 100%;
-  border: 3px solid #C86060;
-  border-right: none;
-  padding: 5px;
-  height: 20px;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  color: #C86060;
-}
-
-.searchTerm:focus{
-  color: #C86060;
-}
-
-.searchButton {
-  width: 60px;
-  height: 36px;
-  border: 1px solid #C86060;
-  background: #C86060;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-/*Resize the wrap to see the search bar change!*/
-.wrap{
-  width: 20%;
-  position: absolute;
-  top: 300px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-/* 검색버튼 끝 */
-
-.font1 {
-   font-size: 14px;
-    color: #666;
-    letter-spacing: -0.5px;
-    line-height: 24px;
-    white-space: normal;
-    line-height: 27px;
-}
-
-.font2 {
-   display: block;
-    font-size: 16px;
-    font-weight: 400;
-    color: #333;
-    font-family: unset;
-    line-height: 27px;
-}
-
-/* css 초기화  */
-table {
-   border-collapse: collapse;
-   border-spacing: 0;
-   border: none;
-}
-
-/*css 초기화*/
-.card {
-   float:left;
-   height: 300px;
-   width: 21%;
-   display: inline-block;
-   margin-top: 30px;
-   margin-left: 30px;
-   margin-bottom: 30px;
-   position: relative;
-   overflow: hidden;
-   border: none;
-}
-
-.card-header {
-   -webkit-transition: 0.5s; /*사파리 & 크롬*/
-    -moz-transition: 0.5s;  /*파이어폭스*/
-    -ms-transition: 0.5s;   /*인터넷 익스플로러*/
-    -o-transition: 0.5s;  /*오페라*/
-    transition: 0.5s;
-   width: 100%;
-   height: 270px;
-   border-radius: 15px 15px 0 0;
-   background-image: url("resources/images/no_image.png");
-   background-size: 100% 280px;
-   background-repeat: no-repeat;   
-}
-
-.card-header-is_closed{
-    background-color: #EF5A31 ;
-    color: #FFF ;
-    font-weight: bold ;
-    text-align: center ;
-    float: right;
-    margin: 15px 15px 0 0;
-    border-radius: 50%;
-    font-weight: bold;
-    padding: 10px 10px;
-    line-height: 20px;
-}
-
-.card-header-is_closed2{
-    background-color: #3fb50e ;
-    color: #FFF ;
-    font-weight: bold ;
-    text-align: center ;
-    float: right;
-    margin: 15px 15px 0 0;
-    border-radius: 50%;
-    font-weight: bold;
-    padding: 10px 10px;
-    line-height: 20px;
-}
-
-.card-body-header{
-   line-height: 25px;
-   margin: 10px 20px 0px 20px;
-}
-
-.card-body-description  {
-    opacity: 0;
-    color: #757B82;
-    line-height: 25px;
-    -webkit-transition: .2s ease-in-out; /*사파리&크롬*/
-    transition : .2s ease-in-out;
-    overflow: hidden;
-   height: 180px;
-   margin: 5px 20px;
-}
-
-.card-body-hashtag {
-   color: #2478FF;
-   font-style: italic;
-}
-
-.card-body-footer {
-     position: absolute; 
-     margin-top: 15px;
-     margin-bottom: 6px;
-    bottom: 0; 
-    width: 314px;
-    font-size: 10px;
-    color: #9FA5A8;
-    padding: 0 10px;
-}
-
-.icon {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 2px;
-}
-
-.imgswap img:last-child{display:none}
-
-</style>
 </head>
 
 <body>
@@ -224,7 +42,7 @@ table {
 <div style="height: 50px;"></div>
 
 <!-- body -->
-<div style="width:1000px; margin-left:auto; margin-right:auto;">
+<div style="width:1070px; margin-left:auto; margin-right:auto;">
 
 <!-- 드롭다운 -->
 <div style="display:inline-block; float:left;">
@@ -335,8 +153,7 @@ function fn_selectGoodsListCallback(data) {
    var body = $(".GOODS_LIST");
    body.empty();
    if (total <= 0) {
-      var str = "<tr>" + "<td colspan='4' align='center' style='margin-top:50'>조회된 결과가 없습니다.</td>"
-            + "</tr>";
+      var str = "<tr>" + "<td colspan='4' align='center' style='margin-top:50'>조회된 결과가 없습니다.</td>" + "</tr>";
       body.append(str);
    } else {
       var params = {
@@ -351,7 +168,7 @@ function fn_selectGoodsListCallback(data) {
       var str = "";
       
       $.each(data.list, function(key, value) {
-                     var imgpath = "<img src='/solo/img/goods_upload/"+value.GOODS_IMG_THUM+"' width='200' height='210'>"
+                     var imgpath = "<img src='/solo/img/goods_upload/"+value.GOODS_IMG_THUM+"' width='100%' height='100%'>"
                      var imgpath1 = value.GOODS_IMG_THUM.split(',');
                      var img0 = imgpath1[0];
                      var img1 = imgpath1[1];
@@ -386,32 +203,32 @@ function fn_selectGoodsListCallback(data) {
                         }
       
                      str += "<div class='card'>"
-                        +      "<a href='#this' name='TITLE'>"
-                        +      "<div class='imgswap'>"
-                        +       "<img src='/solo/img/goods_upload/"+img0+"' width='200' height='210'>" 
-                        +       "<img src='/solo/img/goods_upload/"+img1+"' width='200' height='210'>"
-                        +     " </div> "
-                        +     " <c:if test='${"+num+" ne "+pick1+"}'> "
-                        +      " <span style='background-color:#79ABFF; line-height: 27px; border-radius: 7px;'><font color='#ffffff' size='2'> "
-                        +      pick1 +"</font></span>"   
-                        +     " </c:if>"
-                        +     " <c:if test='${"+num+" ne "+pick2+"}'> "
-                        +     " <span style='background-color:#79ABFF; line-height: 27px; border-radius: 7px;'><font color='#ffffff' size='2'> "
-                        +      pick2 + "</font></span>"
-                        +     " </c:if>"
-                        +     " <c:if test='${"+num+" ne "+pick3+" }'> "
-                        +     " <span style='background-color:#79ABFF; line-height: 27px; border-radius: 7px;'><font color='#ffffff' size='2'> "  
-                        +       pick3 + "</font></span>"
-                        +     " </c:if>"
-                        +     " <c:if test='${"+num+" ne "+pick4+" }'> "
-                        +     " <span style='background-color:#79ABFF; line-height: 27px; border-radius: 7px;'><font color='#ffffff' size='2'> "  
-                        +       pick4 + "</font></span>"
-                        +     " </c:if> <br>"
-                        +     " <font class='font1'>"+value.GOODS_NAME+"</font><br>"
-                        +     " <font class='font2'>"+numberWithCommas(value.GOODS_MPRICE)+"원</font> "   
-                        +       " <input type='hidden' id='IDX' name='IDX' value=" + value.GOODS_NUM + ">"
-                        +     " </a>"
-                        +" </div>";
+                        +	"<a href='#this' name='TITLE'>"
+                        +	"<div class='imgswap'>"
+                        +	"<img src='/solo/img/goods_upload/"+img0+"' width='100%' height='100%'>" 
+                        +	"<img src='/solo/img/goods_upload/"+img1+"' width='100%' height='100%'>"
+                        +	" </div> "
+                        +	" <c:if test='${"+num+" ne "+pick1+"}'> "
+                        +	" <span style='background-color:#79ABFF; line-height: 27px; border-radius: 5px;'><font color='#ffffff' size='2'> "
+                        +	pick1 +"</font></span>"   
+                        +	" </c:if>"
+                        +	" <c:if test='${"+num+" ne "+pick2+"}'> "
+                        +	" <span style='background-color:#5587ED; line-height: 27px; border-radius: 5px;'><font color='#ffffff' size='2'> "
+                        +	pick2 + "</font></span>"
+                        +	" </c:if>"
+                        +	" <c:if test='${"+num+" ne "+pick3+" }'> "
+                        +	" <span style='background-color:blue; line-height: 27px; border-radius: 5px;'><font color='#ffffff' size='2'> "  
+                        +	pick3 + "</font></span>"
+                        +	" </c:if>"
+                        +	" <c:if test='${"+num+" ne "+pick4+" }'> "
+                        +	" <span style='background-color:#9779FF; line-height: 27px; border-radius: 5px;'><font color='#ffffff' size='2'> "  
+                        +	pick4 + "</font></span>"
+                        +	" </c:if> <br>"
+                        +	" <font class='font1'>"+value.GOODS_NAME+"</font><br>"
+                        +	" <font class='font2'>"+numberWithCommas(value.GOODS_MPRICE)+"원</font> "   
+                        +	" <input type='hidden' id='IDX' name='IDX' value=" + value.GOODS_NUM + ">"
+                        +	" </a>"
+                        +	" </div>";
                   });
 
       body.append(str);

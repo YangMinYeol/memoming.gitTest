@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <html>
 <head>
+<link href="<c:url value="/css/card.css"/>" rel="stylesheet">
+<link href="<c:url value='/css/goods.css'/>" rel="stylesheet">
 <style>
 td{
 	margin:50px;
@@ -46,7 +46,7 @@ td{
 			body.empty();
 			if(total == 0){
 				var str = "<tr>"+
-							"<td colspan='4'>검색 된 공연이 없습니다.</td>"+
+							"<td colspan='4'>검색 된 상품이 없습니다.</td>"+
 							"</tr>";
 				body.append(str);
 			}else{
@@ -62,7 +62,7 @@ td{
 				var str = "";
 				str += "<tr>"
 				$.each(data.list, function(key, value){
-					str += "<td align='center'>"+"<a href='#this' name='title'>"+"<img src='<c:url value='/poster/"+value.SHOW_IMAGE+"'/>' width='100' height='100'>"+"</a>"+
+					str += "<td align='center'>"+"<a href='#this' name='title'>"+"<img src='<c:url value='/poster/"+value.SHOW_IMAGE+"'/>' width='100%' height='100%'>"+"</a>"+
 						"<br>"+"<input type='hidden' id='SHOW_NUM' value='"+value.SHOW_NUM+"'>"+value.SHOW_NAME+"</td>";
 					if(list_count == 4){
 						str += "</tr>"+

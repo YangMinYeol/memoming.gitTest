@@ -259,26 +259,26 @@ function as_ok(AORDER_NUM, AORDER_ORDER_NUM, AORDER_STATE){
 							<td >${aal.ORDER_REPORT_COMMENT }</td>
 							<c:choose>
 								<c:when test="${aal.AORDER_STATE eq '4'}">
-									<td><input type="button" onclick="as_ok(${aal.AORDER_NUM }, ${aal.AORDER_STATE }, ${aal.AORDER_ORDER_NUM })" value="요청확인"  class="btn btn-primary btn-sm" style="margin-bottom:2px;"/>
-									<br /><input type="button" onclick="as_cancle(${aal.AORDER_NUM }, ${aal.AORDER_STATE }, ${aal.AORDER_ORDER_NUM })" value="요청취소" class="btn btn-outline-primary btn-sm"/></td>
+									<td><input type="button" onclick="as_ok(${aal.AORDER_NUM }, ${aal.AORDER_STATE }, ${aal.AORDER_ORDER_NUM })" value="요청확인"  class="btn btn-outline-dark btn-sm" style="margin-bottom:2px;"/>
+									<br /><input type="button" onclick="as_cancle(${aal.AORDER_NUM }, ${aal.AORDER_STATE }, ${aal.AORDER_ORDER_NUM })" value="요청취소" class="btn btn-outline-dark btn-sm"/></td>
 								</c:when>
 									<c:when test="${aal.AORDER_STATE eq '5' }">
 									<td>취소 완료 <br /> [처리완료]</td>
 								</c:when>
 								<c:when test="${aal.AORDER_STATE eq '6'}">
-									<td><input type="button" onclick="as_ok(${aal.AORDER_NUM }, ${aal.AORDER_STATE }, ${aal.AORDER_ORDER_NUM })" value="요청확인"  class="btn btn-primary btn-sm" style="margin-bottom:2px;"/>
-									<br /><input type="button" onclick="as_cancle(${aal.AORDER_NUM }, ${aal.AORDER_STATE }, ${aal.AORDER_ORDER_NUM })" value="요청취소" class="btn btn-outline-primary btn-sm" /></td>
+									<td><input type="button" onclick="as_ok(${aal.AORDER_NUM }, ${aal.AORDER_STATE }, ${aal.AORDER_ORDER_NUM })" value="요청확인"  class="btn btn-outline-dark btn-sm" style="margin-bottom:2px;"/>
+									<br /><input type="button" onclick="as_cancle(${aal.AORDER_NUM }, ${aal.AORDER_STATE }, ${aal.AORDER_ORDER_NUM })" value="요청취소" class="btn btn-outline-dark btn-sm" /></td>
 								</c:when>
 								<c:when test="${aal.AORDER_STATE eq '7' }">
-									<td><input type="button" onclick="as_ok(${aal.AORDER_NUM }, ${aal.AORDER_STATE }, ${aal.AORDER_ORDER_NUM })" value="교환완료" class="btn btn-primary btn-sm" style="margin-bottom:2px;"/>
-									<br /><input type="button" onclick="as_cancle(${aal.AORDER_NUM }, ${aal.AORDER_STATE }, ${aal.AORDER_ORDER_NUM })" value="요청취소" class="btn btn-outline-primary btn-sm"/></td>
+									<td><input type="button" onclick="as_ok(${aal.AORDER_NUM }, ${aal.AORDER_STATE }, ${aal.AORDER_ORDER_NUM })" value="교환완료" class="btn btn-outline-dark btn-sm" style="margin-bottom:2px;"/>
+									<br /><input type="button" onclick="as_cancle(${aal.AORDER_NUM }, ${aal.AORDER_STATE }, ${aal.AORDER_ORDER_NUM })" value="요청취소" class="btn btn-outline-dark btn-sm"/></td>
 								</c:when>
 								<c:when test="${aal.AORDER_STATE eq '8' }">
 									<td>교환 완료 <br /> [처리완료]</td>
 								</c:when>
 								<c:when test="${aal.AORDER_STATE eq '9'}">
-									<td><input type="button" onclick="as_ok(${aal.AORDER_NUM }, ${aal.AORDER_STATE }, ${aal.AORDER_ORDER_NUM })" value="요청확인"  class="btn btn-primary btn-sm" style="margin-bottom:2px;"/>
-									<br /><input type="button" onclick="as_cancle(${aal.AORDER_NUM }, ${aal.AORDER_STATE }, ${aal.AORDER_ORDER_NUM })" value="요청취소" class="btn btn-outline-primary btn-sm"/></td>
+									<td><input type="button" onclick="as_ok(${aal.AORDER_NUM }, ${aal.AORDER_STATE }, ${aal.AORDER_ORDER_NUM })" value="요청확인"  class="btn btn-outline-dark btn-sm" style="margin-bottom:2px;"/>
+									<br /><input type="button" onclick="as_cancle(${aal.AORDER_NUM }, ${aal.AORDER_STATE }, ${aal.AORDER_ORDER_NUM })" value="요청취소" class="btn btn-outline-dark btn-sm"/></td>
 								</c:when>
 								<c:otherwise>
 									<td>반품 완료<br /> [처리완료]</td>
